@@ -1006,6 +1006,7 @@ const MedWise = () => {
       const processedImage = await preprocessImage(imageData);
       
       // Local API endpoint
+      // const API_URL = ' http://localhost:5000';
       const API_URL = 'https://medwise-kf10.onrender.com/';
       
       const formData = new FormData();
