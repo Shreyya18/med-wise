@@ -1,8 +1,8 @@
 import React from "react";
-import MedScanner from "./components/MedScanner";
+import MedWise from "./components/MedWise";
 
 function App() {
-  return <MedScanner />;
+  return <MedWise />;
 }
 
 export default App;

@@ -1,0 +1,64 @@
+{
+  "paracetamol": {
+    "en": {
+      "name": "Paracetamol",
+      "uses": "Used for pain relief and fever reduction.",
+      "dosage": "500 to 1000 milligrams every 4 to 6 hours.",
+      "warnings": "Do not exceed 4000 milligrams per day."
+    },
+    "kn": {
+      "name": "ಪ್ಯಾರಾಸಿಟಮಾಲ್",
+      "uses": "ನೋವು ಮತ್ತು ಜ್ವರ ಕಡಿಮೆ ಮಾಡಲು ಬಳಸಲಾಗುತ್ತದೆ.",
+      "dosage": "ಪ್ರತಿ 4 ರಿಂದ 6 ಗಂಟೆಗೆ 500 ರಿಂದ 1000 ಮಿಲಿಗ್ರಾಂ.",
+      "warnings": "ದಿನಕ್ಕೆ 4000 ಮಿಲಿಗ್ರಾಂ ಮೀರಬೇಡಿ."
+    },
+    "hi": {
+      "name": "पैरासिटामोल",
+      "uses": "दर्द और बुखार कम करने के लिए उपयोग किया जाता है।",
+      "dosage": "हर 4 से 6 घंटे में 500 से 1000 मिलीग्राम।",
+      "warnings": "दिन में 4000 मिलीग्राम से अधिक न लें।"
+    }
+  },
+
+  "cetrizine": {
+    "en": {
+      "name": "Cetrizine",
+      "uses": "Used to treat allergy symptoms such as sneezing, itching, and runny nose.",
+      "dosage": "5 to 10 milligrams once daily.",
+      "warnings": "May cause drowsiness. Avoid alcohol."
+    },
+    "kn": {
+      "name": "ಸೆಟ್ರಿಜಿನ್",
+      "uses": "ಅಲರ್ಜಿ ಲಕ್ಷಣಗಳು kuten ಸೀನಿಕೆ, ಮೂಗು ಹರಿಯುವಿಕೆ ಮತ್ತು ಉರಿ ಕಡಿಮೆ ಮಾಡಲು ಬಳಸಲಾಗುತ್ತದೆ.",
+      "dosage": "ದಿನಕ್ಕೆ ಒಮ್ಮೆ 5 ರಿಂದ 10 ಮಿಲಿಗ್ರಾಂ.",
+      "warnings": "ನಿದ್ರೆ ಬರುವ ಸಾಧ್ಯತೆ ಇದೆ. ಮದ್ಯಪಾನ ತಪ್ಪಿಸಿ."
+    },
+    "hi": {
+      "name": "सेट्रिज़िन",
+      "uses": "छींक, खुजली और नाक बहने जैसी एलर्जी के लक्षणों के इलाज के लिए।",
+      "dosage": "दिन में एक बार 5 से 10 मिलीग्राम।",
+      "warnings": "नींद आ सकती है। शराब से बचें।"
+    }
+  },
+
+  "emeset-4": {
+    "en": {
+      "name": "Emeset-4 (Ondansetron)",
+      "uses": "Used to prevent nausea and vomiting.",
+      "dosage": "4 milligrams as prescribed by the doctor.",
+      "warnings": "Take only as directed by a healthcare professional."
+    },
+    "kn": {
+      "name": "ಎಮಿಸೆಟ್-4",
+      "uses": "ವಾಂತಿ ಮತ್ತು ವಾಕರಿಕೆ ತಡೆಯಲು ಬಳಸಲಾಗುತ್ತದೆ.",
+      "dosage": "ವೈದ್ಯರ ಸೂಚನೆಯಂತೆ 4 ಮಿಲಿಗ್ರಾಂ.",
+      "warnings": "ವೈದ್ಯರ ಸಲಹೆಯಿಲ್ಲದೆ ಸೇವಿಸಬೇಡಿ."
+    },
+    "hi": {
+      "name": "एमेसेट-4",
+      "uses": "उल्टी और मतली को रोकने के लिए उपयोग किया जाता है।",
+      "dosage": "डॉक्टर के निर्देश अनुसार 4 मिलीग्राम।",
+      "warnings": "केवल डॉक्टर की सलाह पर लें।"
+    }
+  }
+}

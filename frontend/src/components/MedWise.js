@@ -740,7 +740,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Mic, Type, Upload, Volume2, VolumeX } from 'lucide-react';
 
-const MedScanner = () => {
+const MedWise = () => {
   const [stage, setStage] = useState('language');
   const [language, setLanguage] = useState('');
   const [inputMode, setInputMode] = useState('');
@@ -760,7 +760,7 @@ const MedScanner = () => {
   const texts = {
     english: {
       languagePrompt: "Press 1 for English, Press 2 for Kannada, Press 3 for Hindi",
-      welcome: "Welcome to MedScanner. Please select an input method.",
+      welcome: "Welcome to MedWise. Please select an input method.",
       options: "Press 1 for Image Upload, Press 2 to Type Medicine Name, Press 3 for Voice Input",
       imageOption: "Image Upload",
       typeOption: "Type Medicine Name",
@@ -1231,7 +1231,7 @@ const MedScanner = () => {
         {/* Header */}
         <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-3xl font-bold text-indigo-600">💊 MedScanner</h1>
+            <h1 className="text-3xl font-bold text-indigo-600">💊 Medwise- Know Your Medicine</h1>
             <button
               onClick={() => setAudioEnabled(!audioEnabled)}
               className="p-2 rounded-full bg-indigo-100 hover:bg-indigo-200 transition"
@@ -1515,4 +1515,4 @@ const MedScanner = () => {
   );
 };
 
-export default MedScanner
+export default MedWise
