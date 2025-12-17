@@ -780,7 +780,7 @@ const MedWise = () => {
     },
     kannada: {
       languagePrompt: "ಇಂಗ್ಲಿಷ್‌ಗೆ 1 ಒತ್ತಿ, ಕನ್ನಡಕ್ಕೆ 2 ಒತ್ತಿ, ಹಿಂದಿಗೆ 3 ಒತ್ತಿ",
-      welcome: "ಮೆಡ್‌ಸ್ಕ್ಯಾನರ್‌ಗೆ ಸ್ವಾಗತ. ದಯವಿಟ್ಟು ಇನ್‌ಪುಟ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+      welcome: "ಮೆಡ್ ವೈಸ್ ಗೆ ಸ್ವಾಗತ. ದಯವಿಟ್ಟು ಇನ್‌ಪುಟ್ ವಿಧಾನವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
       options: "ಚಿತ್ರ ಅಪ್‌ಲೋಡ್‌ಗಾಗಿ 1 ಒತ್ತಿ, ಔಷಧದ ಹೆಸರು ಟೈಪ್ ಮಾಡಲು 2 ಒತ್ತಿ, ಧ್ವನಿ ಇನ್‌ಪುಟ್‌ಗಾಗಿ 3 ಒತ್ತಿ",
       imageOption: "ಚಿತ್ರ ಅಪ್‌ಲೋಡ್",
       typeOption: "ಔಷಧದ ಹೆಸರು ಟೈಪ್ ಮಾಡಿ",
@@ -800,7 +800,7 @@ const MedWise = () => {
     },
     hindi: {
       languagePrompt: "अंग्रेजी के लिए 1 दबाएं, कन्नड़ के लिए 2 दबाएं, हिंदी के लिए 3 दबाएं",
-      welcome: "मेडस्कैनर में आपका स्वागत है। कृपया इनपुट विधि चुनें।",
+      welcome: "मेडवाइज में आपका स्वागत है। कृपया इनपुट विधि चुनें।",
       options: "छवि अपलोड के लिए 1 दबाएं, दवा का नाम टाइप करने के लिए 2 दबाएं, वॉयस इनपुट के लिए 3 दबाएं",
       imageOption: "छवि अपलोड करें",
       typeOption: "दवा का नाम टाइप करें",
@@ -1006,7 +1006,7 @@ const MedWise = () => {
       const processedImage = await preprocessImage(imageData);
       
       // Local API endpoint
-      const API_URL = 'http://localhost:5000';
+      const API_URL = 'https://medwise-kf10.onrender.com/';
       
       const formData = new FormData();
       const blob = await fetch(processedImage).then(r => r.blob());
