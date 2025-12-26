@@ -860,66 +860,104 @@ const MedWise = () => {
   };
 }, []);
 
+  // const speak = (text, lang) => {
+  //   if (!audioEnabled || !('speechSynthesis' in window)) return;
+    
+  //   window.speechSynthesis.cancel();
+    
+  //   return new Promise((resolve) => {
+  //     const utterance = new SpeechSynthesisUtterance(text);
+      
+  //     // Set language with better voice selection
+  //     const langCode = languageCodes[lang] || 'en-US';
+  //     utterance.lang = langCode;
+  //     utterance.rate = 0.85;
+  //     utterance.pitch = 1;
+  //     utterance.volume = 1;
+      
+  //     // Wait for voices to load
+  //     const setVoice = () => {
+  //       const voices = window.speechSynthesis.getVoices();
+        
+  //       // Try to find a voice for the language
+  //       let voice = voices.find(v => v.lang.startsWith(langCode.split('-')[0]));
+        
+  //       // Fallback: for Kannada and Hindi, use any available Indian voice or English
+  //       if (!voice && (lang === 'kannada' || lang === 'hindi')) {
+  //         voice = voices.find(v => v.lang.includes('IN')) || 
+  //                 voices.find(v => v.lang.includes('en-IN')) ||
+  //                 voices.find(v => v.lang.includes('en-US'));
+  //       }
+        
+  //       if (voice) {
+  //         utterance.voice = voice;
+  //       }
+  //     };
+      
+  //     // Load voices if not loaded
+  //     if (window.speechSynthesis.getVoices().length === 0) {
+  //       window.speechSynthesis.onvoiceschanged = () => {
+  //         setVoice();
+  //       };
+  //     } else {
+  //       setVoice();
+  //     }
+      
+  //     utterance.onstart = () => setIsSpeaking(true);
+  //     utterance.onend = () => {
+  //       setIsSpeaking(false);
+  //       resolve();
+  //     };
+  //     utterance.onerror = (e) => {
+  //       console.error('Speech error:', e);
+  //       setIsSpeaking(false);
+  //       resolve();
+  //     };
+      
+  //     // Small delay to ensure voice is set
+  //     setTimeout(() => {
+  //       window.speechSynthesis.speak(utterance);
+  //     }, 100);
+  //   });
+  // };
   const speak = (text, lang) => {
-    if (!audioEnabled || !('speechSynthesis' in window)) return;
-    
-    window.speechSynthesis.cancel();
-    
-    return new Promise((resolve) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      
-      // Set language with better voice selection
-      const langCode = languageCodes[lang] || 'en-US';
-      utterance.lang = langCode;
-      utterance.rate = 0.85;
-      utterance.pitch = 1;
-      utterance.volume = 1;
-      
-      // Wait for voices to load
-      const setVoice = () => {
-        const voices = window.speechSynthesis.getVoices();
-        
-        // Try to find a voice for the language
-        let voice = voices.find(v => v.lang.startsWith(langCode.split('-')[0]));
-        
-        // Fallback: for Kannada and Hindi, use any available Indian voice or English
-        if (!voice && (lang === 'kannada' || lang === 'hindi')) {
-          voice = voices.find(v => v.lang.includes('IN')) || 
-                  voices.find(v => v.lang.includes('en-IN')) ||
-                  voices.find(v => v.lang.includes('en-US'));
-        }
-        
-        if (voice) {
-          utterance.voice = voice;
-        }
-      };
-      
-      // Load voices if not loaded
-      if (window.speechSynthesis.getVoices().length === 0) {
-        window.speechSynthesis.onvoiceschanged = () => {
-          setVoice();
-        };
-      } else {
-        setVoice();
-      }
-      
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => {
-        setIsSpeaking(false);
-        resolve();
-      };
-      utterance.onerror = (e) => {
-        console.error('Speech error:', e);
-        setIsSpeaking(false);
-        resolve();
-      };
-      
-      // Small delay to ensure voice is set
-      setTimeout(() => {
-        window.speechSynthesis.speak(utterance);
-      }, 100);
-    });
-  };
+  if (!audioEnabled || !('speechSynthesis' in window) || !text) return;
+
+  return new Promise((resolve) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    const langCode = languageCodes[lang] || 'en-US';
+    utterance.lang = langCode;
+
+    // Slow & clear (medical friendly)
+    utterance.rate = 0.6;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+
+    const voices = window.speechSynthesis.getVoices();
+
+    let voice =
+      voices.find(v => v.lang === langCode) ||
+      voices.find(v => v.lang.startsWith(langCode.split('-')[0])) ||
+      voices.find(v => v.lang.includes('IN')) ||
+      voices.find(v => v.lang.includes('en'));
+
+    if (voice) utterance.voice = voice;
+
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      resolve();
+    };
+    utterance.onerror = () => {
+      setIsSpeaking(false);
+      resolve();
+    };
+
+    window.speechSynthesis.speak(utterance);
+  });
+};
+
 
   const stopSpeaking = () => {
     window.speechSynthesis.cancel();
