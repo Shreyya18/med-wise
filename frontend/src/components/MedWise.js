@@ -740,6 +740,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Mic, Type, Upload, Volume2, VolumeX } from 'lucide-react';
 
+
+
+
 const MedWise = () => {
   const [stage, setStage] = useState('language');
   const [language, setLanguage] = useState('');
@@ -847,6 +850,15 @@ const MedWise = () => {
       warnings: 'Do not exceed 4000mg/day' 
     }
   };
+
+  useEffect(() => {
+  // Force browser to load voices early
+  window.speechSynthesis.getVoices();
+
+  window.speechSynthesis.onvoiceschanged = () => {
+    window.speechSynthesis.getVoices();
+  };
+}, []);
 
   const speak = (text, lang) => {
     if (!audioEnabled || !('speechSynthesis' in window)) return;
