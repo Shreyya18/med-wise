@@ -959,10 +959,16 @@ const MedWise = () => {
 };
 
 
+  // const stopSpeaking = () => {
+  //   window.speechSynthesis.cancel();
+  //   setIsSpeaking(false);
+  // };
   const stopSpeaking = () => {
+  if (window.speechSynthesis.speaking) {
     window.speechSynthesis.cancel();
-    setIsSpeaking(false);
-  };
+  }
+};
+
 
   const playLanguageLoop = () => {
     const languages = ['english', 'kannada', 'hindi'];
