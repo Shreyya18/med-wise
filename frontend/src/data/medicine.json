@@ -1,0 +1,70 @@
+{
+  "paracetamol": {
+    "name": {
+      "en": "Paracetamol",
+      "kn": "ಪ್ಯಾರಾಸಿಟಮಾಲ್",
+      "hi": "पैरासिटामोल"
+    },
+    "uses": {
+      "en": "Used to reduce fever and relieve pain",
+      "kn": "ಜ್ವರ ಮತ್ತು ನೋವನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಬಳಸಲಾಗುತ್ತದೆ",
+      "hi": "बुखार और दर्द कम करने के लिए उपयोग किया जाता है"
+    },
+    "dosage": {
+      "en": "500 to 1000 milligrams every 4 to 6 hours",
+      "kn": "ಪ್ರತಿ 4 ರಿಂದ 6 ಗಂಟೆಗೆ 500 ರಿಂದ 1000 ಮಿಲಿಗ್ರಾಂ",
+      "hi": "हर 4 से 6 घंटे में 500 से 1000 मिलीग्राम"
+    },
+    "warnings": {
+      "en": "Do not exceed the maximum daily dose",
+      "kn": "ಗರಿಷ್ಠ ದಿನಸಿ ಪ್ರಮಾಣವನ್ನು ಮೀರಬೇಡಿ",
+      "hi": "अधिकतम दैनिक खुराक से अधिक न लें"
+    }
+  },
+
+  "cetrizine": {
+    "name": {
+      "en": "Cetrizine",
+      "kn": "ಸೆಟಿರಿಜಿನ್",
+      "hi": "सेटिरिज़िन"
+    },
+    "uses": {
+      "en": "Used to treat allergy symptoms like sneezing and itching",
+      "kn": "ಅಲರ್ಜಿ ಲಕ್ಷಣಗಳ ಚಿಕಿತ್ಸೆಗಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ",
+      "hi": "एलर्जी के लक्षणों के इलाज में उपयोग की जाती है"
+    },
+    "dosage": {
+      "en": "5 to 10 milligrams once daily",
+      "kn": "ದಿನಕ್ಕೆ ಒಮ್ಮೆ 5 ರಿಂದ 10 ಮಿಲಿಗ್ರಾಂ",
+      "hi": "दिन में एक बार 5 से 10 मिलीग्राम"
+    },
+    "warnings": {
+      "en": "May cause drowsiness. Avoid driving",
+      "kn": "ನಿದ್ರೆ ತರಬಹುದು. ವಾಹನ ಚಾಲನೆ ತಪ್ಪಿಸಿ",
+      "hi": "नींद आ सकती है। वाहन न चलाएं"
+    }
+  },
+
+  "emeset-4": {
+    "name": {
+      "en": "Emeset 4",
+      "kn": "ಎಮೆಸೆಟ್ 4",
+      "hi": "एमेसेट 4"
+    },
+    "uses": {
+      "en": "Used to prevent nausea and vomiting",
+      "kn": "ವಾಕರಿಕೆ ಮತ್ತು ವಾಂತಿ ತಡೆಯಲು ಬಳಸಲಾಗುತ್ತದೆ",
+      "hi": "मतली और उल्टी को रोकने के लिए उपयोग की जाती है"
+    },
+    "dosage": {
+      "en": "4 milligrams as prescribed by the doctor",
+      "kn": "ವೈದ್ಯರ ಸಲಹೆಯಂತೆ 4 ಮಿಲಿಗ್ರಾಂ",
+      "hi": "डॉक्टर की सलाह अनुसार 4 मिलीग्राम"
+    },
+    "warnings": {
+      "en": "Take only as prescribed by a doctor",
+      "kn": "ವೈದ್ಯರ ಸೂಚನೆಯಂತೆ ಮಾತ್ರ ಸೇವಿಸಿ",
+      "hi": "केवल डॉक्टर की सलाह अनुसार ही लें"
+    }
+  }
+}

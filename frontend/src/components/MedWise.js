@@ -736,9 +736,9 @@
 
 
 
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Mic, Type, Upload, Volume2, VolumeX } from 'lucide-react';
+import medicines from "../data/medicine.json";
 
 
 
@@ -828,6 +828,13 @@ const MedWise = () => {
     kannada: 'kn-IN',
     hindi: 'hi-IN'
   };
+
+  const getLangKey = () => {
+  if (language === "english") return "en";
+  if (language === "kannada") return "kn";
+  return "hi";
+};
+
 
   // Medicine database from your trained model
   const MEDICINE_DATABASE = {
@@ -928,6 +935,8 @@ const MedWise = () => {
 
     const langCode = languageCodes[lang] || 'en-US';
     utterance.lang = langCode;
+
+    
 
     // Slow & clear (medical friendly)
     utterance.rate = 0.6;
@@ -1153,17 +1162,52 @@ const MedWise = () => {
       // Call your trained model
       const medicineInfo = await predictMedicine(imageData);
       
-      if (medicineInfo) {
-        setResult(medicineInfo);
-        setStage('result');
-        
-        const resultText = `Medicine identified: ${medicineInfo.name}. Used for ${medicineInfo.uses}. ${medicineInfo.dosage}`;
-        speak(resultText, language);
-      } else {
-        setResult({ name: texts[language].noResult, uses: '', dosage: '', warnings: '' });
-        setStage('result');
-        speak(texts[language].noResult, language);
-      }
+      if (!medicineInfo) {
+  setResult({
+    name: texts[language].noResult,
+    uses: "",
+    dosage: "",
+    warnings: ""
+  });
+  setStage("result");
+  speak(texts[language].noResult, language);
+  return;
+}
+
+const langKey = getLangKey();
+
+// backend returns: { name: "paracetamol" }
+const key = medicineInfo.name.toLowerCase();
+
+const data = medicines[key];
+
+if (!data) {
+  setResult({
+    name: texts[language].noResult,
+    uses: "",
+    dosage: "",
+    warnings: ""
+  });
+  setStage("result");
+  speak(texts[language].noResult, language);
+  return;
+}
+
+setResult({
+  name: data.name[langKey],
+  uses: data.uses[langKey],
+  dosage: data.dosage[langKey],
+  warnings: data.warnings[langKey]
+});
+
+setStage("result");
+
+// 🔊 Speak slowly & sequentially
+await speak(data.name[langKey], language);
+await speak(data.uses[langKey], language);
+await speak(data.dosage[langKey], language);
+await speak(data.warnings[langKey], language);
+
     } catch (error) {
       console.error('Processing error:', error);
       setResult({ name: 'Error processing image', uses: '', dosage: '', warnings: '' });
