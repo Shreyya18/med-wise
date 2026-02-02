@@ -21,7 +21,7 @@ CORS(
 
 
 # Load your trained model
-MODEL_PATH = 'medwise_trained_model.h5'  # Update with your model path
+MODEL_PATH = 'medwise_trained.tflite'  # Update with your model path
 
 # Try to load model, but allow app to run without it for testing
 try:
@@ -43,7 +43,9 @@ except Exception as e:
 CLASS_NAMES = [
     'cetrizine',
     'emeset-4',
-    'paracetamol'
+    'ibugesic-plus',
+    'paracetamol',
+    'zerodol'
 ]
 
 # # Medicine information database
@@ -126,6 +128,16 @@ def health_check():
         'demo_mode': model is None,
         'model_path': MODEL_PATH
     })
+
+@app.before_request
+def handle_options():
+    if request.method == "OPTIONS":
+        response = jsonify({})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+        return response
+
 
 @app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
