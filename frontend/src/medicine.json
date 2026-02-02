@@ -1,0 +1,192 @@
+{
+  "cetrizine": {
+    "name": {
+      "en": "Cetrizine",
+      "kn": "ಸೆಟ್ರಿಜಿನ್",
+      "hi": "सेट्रिज़िन"
+    },
+    "genericName": {
+      "en": "Cetirizine Hydrochloride",
+      "kn": "ಸೆಟಿರಿಜಿನ್ ಹೈಡ್ರೋಕ್ಲೋರೈಡ್",
+      "hi": "सेटीरिज़िन हाइड्रोक्लोराइड"
+    },
+    "uses": {
+      "en": "Antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching. It works by blocking histamine that your body makes during an allergic reaction.",
+      "kn": "ನೀರು ಬರುವ ಕಣ್ಣುಗಳು, ಮೂಗು ಸೋರುವುದು, ಕಣ್ಣು/ಮೂಗು ತುರಿಕೆ, ಸೀನುವುದು, ಉರ್ಟಿಕೇರಿಯಾ ಮತ್ತು ತುರಿಕೆ ಮುಂತಾದ ಅಲರ್ಜಿ ಲಕ್ಷಣಗಳನ್ನು ನಿವಾರಿಸಲು ಬಳಸುವ ಆಂಟಿಹಿಸ್ಟಮೈನ್. ಅಲರ್ಜಿ ಪ್ರತಿಕ್ರಿಯೆ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ದೇಹ ತಯಾರಿಸುವ ಹಿಸ್ಟಮೈನ್ ಅನ್ನು ತಡೆಯುವ ಮೂಲಕ ಕೆಲಸ ಮಾಡುತ್ತದೆ.",
+      "hi": "एंटीहिस्टामाइन जिसका उपयोग एलर्जी के लक्षणों जैसे पानी आँखें, बहती नाक, आँखों/नाक में खुजली, छींक, पित्ती और खुजली को दूर करने के लिए किया जाता है। यह एलर्जी प्रतिक्रिया के दौरान आपके शरीर द्वारा बनाए गए हिस्टामाइन को अवरुद्ध करके काम करता है।"
+    },
+    "dosage": {
+      "en": "Adults and children 6 years and older: 5-10mg once daily. Children under 6 years: Consult doctor. Take with or without food, preferably at bedtime as it may cause drowsiness.",
+      "kn": "ವಯಸ್ಕರು ಮತ್ತು 6 ವರ್ಷ ಮತ್ತು ಅದಕ್ಕಿಂತ ಹೆಚ್ಚಿನ ಮಕ್ಕಳು: ದಿನಕ್ಕೊಮ್ಮೆ 5-10mg. 6 ವರ್ಷದೊಳಗಿನ ಮಕ್ಕಳು: ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ. ಆಹಾರದೊಂದಿಗೆ ಅಥವಾ ಇಲ್ಲದೆ ತೆಗೆದುಕೊಳ್ಳಿ, ಮಲಗುವ ಸಮಯದಲ್ಲಿ ತೆಗೆದುಕೊಳ್ಳುವುದು ಉತ್ತಮ ಏಕೆಂದರೆ ಅದು ನಿದ್ರಾಹೀನತೆಯನ್ನು ಉಂಟುಮಾಡಬಹುದು.",
+      "hi": "वयस्क और 6 वर्ष और उससे अधिक उम्र के बच्चे: दिन में एक बार 5-10mg। 6 वर्ष से कम उम्र के बच्चे: डॉक्टर से परामर्श लें। भोजन के साथ या बिना लें, अधिमानतः सोते समय क्योंकि यह उनींदापन पैदा कर सकता है।"
+    },
+    "sideEffects": {
+      "en": "Common: Drowsiness, dry mouth, fatigue, headache. Rare: Dizziness, stomach pain, diarrhea. Very rare: Allergic reactions, rapid heartbeat, difficulty urinating.",
+      "kn": "ಸಾಮಾನ್ಯ: ನಿದ್ರಾಹೀನತೆ, ಒಣ ಬಾಯಿ, ಆಯಾಸ, ತಲೆನೋವು. ಅಪರೂಪ: ತಲೆತಿರುಗುವಿಕೆ, ಹೊಟ್ಟೆ ನೋವು, ಅತಿಸಾರ. ಅತ್ಯಂತ ಅಪರೂಪ: ಅಲರ್ಜಿ ಪ್ರತಿಕ್ರಿಯೆಗಳು, ವೇಗದ ಹೃದಯ ಬಡಿತ, ಮೂತ್ರ ವಿಸರ್ಜನೆಯಲ್ಲಿ ತೊಂದರೆ.",
+      "hi": "सामान्य: उनींदापन, सूखा मुंह, थकान, सिरदर्द। दुर्लभ: चक्कर आना, पेट दर्द, दस्त। बहुत दुर्लभ: एलर्जी प्रतिक्रियाएं, तेज़ दिल की धड़कन, पेशाब करने में कठिनाई।"
+    },
+    "warnings": {
+      "en": "Do not drive or operate machinery as it may cause drowsiness. Avoid alcohol. Tell your doctor if you have kidney disease, liver disease, or difficulty urinating. Pregnant or breastfeeding women should consult doctor before use.",
+      "kn": "ವಾಹನ ಚಲಾಯಿಸಬೇಡಿ ಅಥವಾ ಯಂತ್ರೋಪಕರಣಗಳನ್ನು ನಿರ್ವಹಿಸಬೇಡಿ ಏಕೆಂದರೆ ಅದು ನಿದ್ರಾಹೀನತೆಯನ್ನು ಉಂಟುಮಾಡಬಹುದು. ಮದ್ಯವನ್ನು ತಪ್ಪಿಸಿ. ನಿಮಗೆ ಮೂತ್ರಪಿಂಡ ಕಾಯಿಲೆ, ಯಕೃತ್ತಿನ ಕಾಯಿಲೆ ಅಥವಾ ಮೂತ್ರ ವಿಸರ್ಜನೆಯಲ್ಲಿ ತೊಂದರೆ ಇದ್ದರೆ ವೈದ್ಯರಿಗೆ ತಿಳಿಸಿ. ಗರ್ಭಿಣಿ ಅಥವಾ ಹಾಲುಣಿಸುವ ಮಹಿಳೆಯರು ಬಳಕೆಯ ಮೊದಲು ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಬೇಕು.",
+      "hi": "वाहन न चलाएं या मशीनरी न चलाएं क्योंकि यह उनींदापन पैदा कर सकता है। शराब से बचें। अपने डॉक्टर को बताएं कि क्या आपको गुर्दे की बीमारी, यकृत रोग, या पेशाब करने में कठिनाई है। गर्भवती या स्तनपान कराने वाली महिलाओं को उपयोग से पहले डॉक्टर से परामर्श लेना चाहिए।"
+    },
+    "manufacturer": {
+      "en": "Various pharmaceutical companies",
+      "kn": "ವಿವಿಧ ಔಷಧೀಯ ಕಂಪನಿಗಳು",
+      "hi": "विभिन्न फार्मास्युटिकल कंपनियां"
+    },
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop"
+  },
+  "emeset-4": {
+    "name": {
+      "en": "Emeset-4",
+      "kn": "ಎಮೆಸೆಟ್-4",
+      "hi": "एमसेट-4"
+    },
+    "genericName": {
+      "en": "Ondansetron 4mg",
+      "kn": "ಒಂಡಾನ್ಸೆಟ್ರಾನ್ 4mg",
+      "hi": "ओंडानसेट्रॉन 4mg"
+    },
+    "uses": {
+      "en": "Prevents nausea and vomiting caused by cancer chemotherapy, radiation therapy, or surgery. Also used to prevent nausea and vomiting after surgery. Works by blocking serotonin, a natural substance that causes nausea and vomiting.",
+      "kn": "ಕ್ಯಾನ್ಸರ್ ಕೀಮೋಥೆರಪಿ, ವಿಕಿರಣ ಚಿಕಿತ್ಸೆ ಅಥವಾ ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಯಿಂದ ಉಂಟಾಗುವ ವಾಕರಿಕೆ ಮತ್ತು ವಾಂತಿಯನ್ನು ತಡೆಯುತ್ತದೆ. ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಯ ನಂತರ ವಾಕರಿಕೆ ಮತ್ತು ವಾಂತಿಯನ್ನು ತಡೆಗಟ್ಟಲು ಸಹ ಬಳಸಲಾಗುತ್ತದೆ. ವಾಕರಿಕೆ ಮತ್ತು ವಾಂತಿಯನ್ನು ಉಂಟುಮಾಡುವ ನೈಸರ್ಗಿಕ ಪದಾರ್ಥವಾದ ಸೆರೋಟೋನಿನ್ ಅನ್ನು ತಡೆಯುವ ಮೂಲಕ ಕೆಲಸ ಮಾಡುತ್ತದೆ.",
+      "hi": "कैंसर कीमोथेरेपी, विकिरण चिकित्सा, या सर्जरी के कारण होने वाली मतली और उल्टी को रोकता है। सर्जरी के बाद मतली और उल्टी को रोकने के लिए भी उपयोग किया जाता है। सेरोटोनिन, एक प्राकृतिक पदार्थ जो मतली और उल्टी का कारण बनता है, को अवरुद्ध करके काम करता है।"
+    },
+    "dosage": {
+      "en": "Adults: 4-8mg 30 minutes before chemotherapy or 1-2 hours before radiation therapy. Post-surgery: 4mg immediately after surgery. Children: Dose based on body weight, consult doctor. Can be taken with or without food.",
+      "kn": "ವಯಸ್ಕರು: ಕೀಮೋಥೆರಪಿಗೆ 30 ನಿಮಿಷಗಳ ಮೊದಲು ಅಥವಾ ವಿಕಿರಣ ಚಿಕಿತ್ಸೆಗೆ 1-2 ಗಂಟೆಗಳ ಮೊದಲು 4-8mg. ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಯ ನಂತರ: ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಯ ತಕ್ಷಣದ ನಂತರ 4mg. ಮಕ್ಕಳು: ದೇಹದ ತೂಕದ ಆಧಾರದ ಮೇಲೆ ಪ್ರಮಾಣ, ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ. ಆಹಾರದೊಂದಿಗೆ ಅಥವಾ ಇಲ್ಲದೆ ತೆಗೆದುಕೊಳ್ಳಬಹುದು.",
+      "hi": "वयस्क: कीमोथेरेपी से 30 मिनट पहले या विकिरण चिकित्सा से 1-2 घंटे पहले 4-8mg। सर्जरी के बाद: सर्जरी के तुरंत बाद 4mg। बच्चे: शरीर के वजन के आधार पर खुराक, डॉक्टर से परामर्श लें। भोजन के साथ या बिना लिया जा सकता है।"
+    },
+    "sideEffects": {
+      "en": "Common: Headache, constipation, dizziness, drowsiness. Less common: Diarrhea, fever, weakness. Rare: Fast or irregular heartbeat, chest pain, vision changes, difficulty breathing.",
+      "kn": "ಸಾಮಾನ್ಯ: ತಲೆನೋವು, ಮಲಬದ್ಧತೆ, ತಲೆತಿರುಗುವಿಕೆ, ನಿದ್ರಾಹೀನತೆ. ಕಡಿಮೆ ಸಾಮಾನ್ಯ: ಅತಿಸಾರ, ಜ್ವರ, ದೌರ್ಬಲ್ಯ. ಅಪರೂಪ: ವೇಗದ ಅಥವಾ ಅನಿಯಮಿತ ಹೃದಯ ಬಡಿತ, ಎದೆ ನೋವು, ದೃಷ್ಟಿ ಬದಲಾವಣೆಗಳು, ಉಸಿರಾಟದಲ್ಲಿ ತೊಂದರೆ.",
+      "hi": "सामान्य: सिरदर्द, कब्ज, चक्कर आना, उनींदापन। कम सामान्य: दस्त, बुखार, कमजोरी। दुर्लभ: तेज़ या अनियमित दिल की धड़कन, सीने में दर्द, दृष्टि में परिवर्तन, सांस लेने में कठिनाई।"
+    },
+    "warnings": {
+      "en": "Tell your doctor if you have heart rhythm problems, liver disease, or electrolyte imbalance. May cause drowsiness or dizziness. Avoid alcohol. Not recommended for prolonged use. Pregnant women should use only if clearly needed.",
+      "kn": "ನಿಮಗೆ ಹೃದಯ ಲಯ ಸಮಸ್ಯೆಗಳು, ಯಕೃತ್ತಿನ ಕಾಯಿಲೆ ಅಥವಾ ಎಲೆಕ್ಟ್ರೋಲೈಟ್ ಅಸಮತೋಲನ ಇದ್ದರೆ ವೈದ್ಯರಿಗೆ ತಿಳಿಸಿ. ನಿದ್ರಾಹೀನತೆ ಅಥವಾ ತಲೆತಿರುಗುವಿಕೆಯನ್ನು ಉಂಟುಮಾಡಬಹುದು. ಮದ್ಯವನ್ನು ತಪ್ಪಿಸಿ. ದೀರ್ಘಾವಧಿಯ ಬಳಕೆಗೆ ಶಿಫಾರಸು ಮಾಡಲಾಗಿಲ್ಲ. ಗರ್ಭಿಣಿ ಮಹಿಳೆಯರು ಸ್ಪಷ್ಟವಾಗಿ ಅಗತ್ಯವಿದ್ದರೆ ಮಾತ್ರ ಬಳಸಬೇಕು.",
+      "hi": "अपने डॉक्टर को बताएं कि क्या आपको हृदय ताल की समस्या, यकृत रोग, या इलेक्ट्रोलाइट असंतुलन है। उनींदापन या चक्कर आ सकता है। शराब से बचें। लंबे समय तक उपयोग के लिए अनुशंसित नहीं। गर्भवती महिलाओं को केवल तभी उपयोग करना चाहिए जब स्पष्ट रूप से आवश्यक हो।"
+    },
+    "manufacturer": {
+      "en": "Cipla Ltd.",
+      "kn": "ಸಿಪ್ಲಾ ಲಿಮಿಟೆಡ್",
+      "hi": "सिप्ला लिमिटेड"
+    },
+    "image": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400&h=400&fit=crop"
+  },
+  "ibugesic-plus": {
+    "name": {
+      "en": "Ibugesic Plus",
+      "kn": "ಐಬ್ಯೂಜೆಸಿಕ್ ಪ್ಲಸ್",
+      "hi": "इबूजेसिक प्लस"
+    },
+    "genericName": {
+      "en": "Ibuprofen 400mg + Paracetamol 325mg",
+      "kn": "ಐಬುಪ್ರೊಫೇನ್ 400mg + ಪ್ಯಾರಸಿಟಮಾಲ್ 325mg",
+      "hi": "इबुप्रोफेन 400mg + पैरासिटामोल 325mg"
+    },
+    "uses": {
+      "en": "Combination pain reliever and fever reducer. Effective for headaches, toothaches, menstrual cramps, muscle aches, arthritis pain, back pain, and common cold/flu symptoms. The combination provides better pain relief than either drug alone.",
+      "kn": "ಸಂಯೋಜಿತ ನೋವು ನಿವಾರಕ ಮತ್ತು ಜ್ವರ ತಗ್ಗಿಸುವ ಔಷಧ. ತಲೆನೋವು, ಹಲ್ಲುನೋವು, ಮುಟ್ಟಿನ ಸೆಳೆತ, ಸ್ನಾಯು ನೋವು, ಸಂಧಿವಾತ ನೋವು, ಬೆನ್ನು ನೋವು ಮತ್ತು ಸಾಮಾನ್ಯ ಶೀತ/ಜ್ವರ ಲಕ್ಷಣಗಳಿಗೆ ಪರಿಣಾಮಕಾರಿ. ಸಂಯೋಜನೆಯು ಯಾವುದೇ ಔಷಧಕ್ಕಿಂತ ಉತ್ತಮ ನೋವು ನಿವಾರಣೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ.",
+      "hi": "संयोजन दर्द निवारक और बुखार कम करने वाली दवा। सिरदर्द, दांत दर्द, मासिक धर्म में ऐंठन, मांसपेशियों में दर्द, गठिया दर्द, पीठ दर्द, और सामान्य सर्दी/फ्लू के लक्षणों के लिए प्रभावी। संयोजन किसी भी दवा अकेले की तुलना में बेहतर दर्द से राहत प्रदान करता है।"
+    },
+    "dosage": {
+      "en": "Adults and children over 12 years: 1 tablet every 6-8 hours as needed. Maximum 3 tablets in 24 hours. Take with food or milk to reduce stomach upset. Children under 12: Consult doctor.",
+      "kn": "ವಯಸ್ಕರು ಮತ್ತು 12 ವರ್ಷಕ್ಕಿಂತ ಹೆಚ್ಚಿನ ಮಕ್ಕಳು: ಅಗತ್ಯವಿರುವಂತೆ ಪ್ರತಿ 6-8 ಗಂಟೆಗಳಿಗೊಮ್ಮೆ 1 ಟ್ಯಾಬ್ಲೆಟ್. 24 ಗಂಟೆಗಳಲ್ಲಿ ಗರಿಷ್ಠ 3 ಟ್ಯಾಬ್ಲೆಟ್‌ಗಳು. ಹೊಟ್ಟೆ ಅಸ್ವಸ್ಥತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಆಹಾರ ಅಥವಾ ಹಾಲಿನೊಂದಿಗೆ ತೆಗೆದುಕೊಳ್ಳಿ. 12 ವರ್ಷದೊಳಗಿನ ಮಕ್ಕಳು: ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ.",
+      "hi": "वयस्क और 12 वर्ष से अधिक उम्र के बच्चे: आवश्यकतानुसार हर 6-8 घंटे में 1 गोली। 24 घंटे में अधिकतम 3 गोलियां। पेट खराब होने को कम करने के लिए भोजन या दूध के साथ लें। 12 वर्ष से कम उम्र के बच्चे: डॉक्टर से परामर्श लें।"
+    },
+    "sideEffects": {
+      "en": "Common: Nausea, heartburn, stomach pain, dizziness. Less common: Constipation, diarrhea, gas. Rare but serious: Stomach ulcers, bleeding, liver damage, allergic reactions, high blood pressure.",
+      "kn": "ಸಾಮಾನ್ಯ: ವಾಕರಿಕೆ, ಎದೆಯರಿಕೆ, ಹೊಟ್ಟೆ ನೋವು, ತಲೆತಿರುಗುವಿಕೆ. ಕಡಿಮೆ ಸಾಮಾನ್ಯ: ಮಲಬದ್ಧತೆ, ಅತಿಸಾರ, ಗ್ಯಾಸ್. ಅಪರೂಪ ಆದರೆ ಗಂಭೀರ: ಹೊಟ್ಟೆಯ ಹುಣ್ಣು, ರಕ್ತಸ್ರಾವ, ಯಕೃತ್ತಿನ ಹಾನಿ, ಅಲರ್ಜಿ ಪ್ರತಿಕ್ರಿಯೆಗಳು, ಅಧಿಕ ರಕ್ತದೊತ್ತಡ.",
+      "hi": "सामान्य: मतली, सीने में जलन, पेट दर्द, चक्कर आना। कम सामान्य: कब्ज, दस्त, गैस। दुर्लभ लेकिन गंभीर: पेट में अल्सर, रक्तस्राव, यकृत क्षति, एलर्जी प्रतिक्रियाएं, उच्च रक्तचाप।"
+    },
+    "warnings": {
+      "en": "Do not take if you have stomach ulcers, bleeding disorders, severe kidney or liver disease. Avoid alcohol. Not for children under 12. Consult doctor if pregnant or breastfeeding. Do not exceed recommended dose. May increase risk of heart attack or stroke with prolonged use.",
+      "kn": "ನಿಮಗೆ ಹೊಟ್ಟೆಯ ಹುಣ್ಣು, ರಕ್ತಸ್ರಾವದ ಅಸ್ವಸ್ಥತೆಗಳು, ತೀವ್ರ ಮೂತ್ರಪಿಂಡ ಅಥವಾ ಯಕೃತ್ತಿನ ಕಾಯಿಲೆ ಇದ್ದರೆ ತೆಗೆದುಕೊಳ್ಳಬೇಡಿ. ಮದ್ಯವನ್ನು ತಪ್ಪಿಸಿ. 12 ವರ್ಷದೊಳಗಿನ ಮಕ್ಕಳಿಗೆ ಅಲ್ಲ. ಗರ್ಭಿಣಿ ಅಥವಾ ಹಾಲುಣಿಸುವಿಕೆಯಲ್ಲಿದ್ದರೆ ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ. ಶಿಫಾರಸು ಮಾಡಿದ ಪ್ರಮಾಣವನ್ನು ಮೀರಬೇಡಿ. ದೀರ್ಘಾವಧಿಯ ಬಳಕೆಯೊಂದಿಗೆ ಹೃದಯಾಘಾತ ಅಥವಾ ಪಾರ್ಶ್ವವಾಯು ಅಪಾಯವನ್ನು ಹೆಚ್ಚಿಸಬಹುದು.",
+      "hi": "यदि आपको पेट में अल्सर, रक्तस्राव विकार, गंभीर गुर्दे या यकृत रोग है तो न लें। शराब से बचें। 12 वर्ष से कम उम्र के बच्चों के लिए नहीं। गर्भवती या स्तनपान कराने वाली महिलाओं को डॉक्टर से परामर्श लें। अनुशंसित खुराक से अधिक न लें। लंबे समय तक उपयोग के साथ दिल के दौरे या स्ट्रोक का खतरा बढ़ सकता है।"
+    },
+    "manufacturer": {
+      "en": "Cipla Ltd.",
+      "kn": "ಸಿಪ್ಲಾ ಲಿಮಿಟೆಡ್",
+      "hi": "सिप्ला लिमिटेड"
+    },
+    "image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=400&fit=crop"
+  },
+  "paracetamol": {
+    "name": {
+      "en": "Paracetamol",
+      "kn": "ಪ್ಯಾರಸಿಟಮಾಲ್",
+      "hi": "पैरासिटामोल"
+    },
+    "genericName": {
+      "en": "Acetaminophen",
+      "kn": "ಅಸಿಟಮಿನೋಫೆನ್",
+      "hi": "एसिटामिनोफेन"
+    },
+    "uses": {
+      "en": "Pain reliever and fever reducer. Effective for headaches, muscle aches, arthritis, backache, toothaches, colds, and fevers. Works by changing the way the body senses pain and by cooling the body. One of the safest pain relievers when used as directed.",
+      "kn": "ನೋವು ನಿವಾರಕ ಮತ್ತು ಜ್ವರ ತಗ್ಗಿಸುವ ಔಷಧ. ತಲೆನೋವು, ಸ್ನಾಯು ನೋವು, ಸಂಧಿವಾತ, ಬೆನ್ನು ನೋವು, ಹಲ್ಲು ನೋವು, ಶೀತ ಮತ್ತು ಜ್ವರಕ್ಕೆ ಪರಿಣಾಮಕಾರಿ. ದೇಹವು ನೋವನ್ನು ಗ್ರಹಿಸುವ ವಿಧಾನವನ್ನು ಬದಲಾಯಿಸುವ ಮೂಲಕ ಮತ್ತು ದೇಹವನ್ನು ತಂಪುಗೊಳಿಸುವ ಮೂಲಕ ಕೆಲಸ ಮಾಡುತ್ತದೆ. ನಿರ್ದೇಶಿಸಿದಂತೆ ಬಳಸಿದಾಗ ಅತ್ಯಂತ ಸುರಕ್ಷಿತ ನೋವು ನಿವಾರಕಗಳಲ್ಲಿ ಒಂದು.",
+      "hi": "दर्द निवारक और बुखार कम करने वाली दवा। सिरदर्द, मांसपेशियों में दर्द, गठिया, पीठ दर्द, दांत दर्द, सर्दी और बुखार के लिए प्रभावी। शरीर द्वारा दर्द को महसूस करने के तरीके को बदलकर और शरीर को ठंडा करके काम करता है। निर्देशानुसार उपयोग करने पर सबसे सुरक्षित दर्द निवारकों में से एक।"
+    },
+    "dosage": {
+      "en": "Adults: 500-1000mg every 4-6 hours as needed. Maximum 4000mg per day. Children: Dose based on age and weight - consult doctor or follow package directions carefully. Can be taken with or without food.",
+      "kn": "ವಯಸ್ಕರು: ಅಗತ್ಯವಿರುವಂತೆ ಪ್ರತಿ 4-6 ಗಂಟೆಗಳಿಗೊಮ್ಮೆ 500-1000mg. ದಿನಕ್ಕೆ ಗರಿಷ್ಠ 4000mg. ಮಕ್ಕಳು: ವಯಸ್ಸು ಮತ್ತು ತೂಕದ ಆಧಾರದ ಮೇಲೆ ಪ್ರಮಾಣ - ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಿ ಅಥವಾ ಪ್ಯಾಕೇಜ್ ನಿರ್ದೇಶನಗಳನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಅನುಸರಿಸಿ. ಆಹಾರದೊಂದಿಗೆ ಅಥವಾ ಇಲ್ಲದೆ ತೆಗೆದುಕೊಳ್ಳಬಹುದು.",
+      "hi": "वयस्क: आवश्यकतानुसार हर 4-6 घंटे में 500-1000mg। प्रतिदिन अधिकतम 4000mg। बच्चे: उम्र और वजन के आधार पर खुराक - डॉक्टर से परामर्श लें या पैकेज निर्देशों का सावधानीपूर्वक पालन करें। भोजन के साथ या बिना लिया जा सकता है।"
+    },
+    "sideEffects": {
+      "en": "Generally very safe at recommended doses. Rare: Nausea, skin rash, allergic reactions. Serious (with overdose): Severe liver damage, kidney damage, low blood sugar. If you experience yellowing of skin/eyes, dark urine, or severe stomach pain, seek immediate medical attention.",
+      "kn": "ಶಿಫಾರಸು ಮಾಡಿದ ಪ್ರಮಾಣದಲ್ಲಿ ಸಾಮಾನ್ಯವಾಗಿ ಅತ್ಯಂತ ಸುರಕ್ಷಿತ. ಅಪರೂಪ: ವಾಕರಿಕೆ, ಚರ್ಮದ ದದ್ದು, ಅಲರ್ಜಿ ಪ್ರತಿಕ್ರಿಯೆಗಳು. ಗಂಭೀರ (ಅತಿಯಾದ ಸೇವನೆಯೊಂದಿಗೆ): ತೀವ್ರ ಯಕೃತ್ತಿನ ಹಾನಿ, ಮೂತ್ರಪಿಂಡ ಹಾನಿ, ಕಡಿಮೆ ರಕ್ತದ ಸಕ್ಕರೆ. ನಿಮಗೆ ಚರ್ಮ/ಕಣ್ಣುಗಳು ಹಳದಿಯಾಗುವುದು, ಕಪ್ಪು ಮೂತ್ರ ಅಥವಾ ತೀವ್ರ ಹೊಟ್ಟೆ ನೋವು ಅನುಭವವಾದರೆ, ತಕ್ಷಣ ವೈದ್ಯಕೀಯ ಆರೈಕೆಯನ್ನು ಪಡೆಯಿರಿ.",
+      "hi": "अनुशंसित खुराक पर आमतौर पर बहुत सुरक्षित। दुर्लभ: मतली, त्वचा पर चकत्ते, एलर्जी प्रतिक्रियाएं। गंभीर (ओवरडोज़ के साथ): गंभीर यकृत क्षति, गुर्दे की क्षति, कम रक्त शर्करा। यदि आप त्वचा/आंखों का पीला पड़ना, गहरे रंग का मूत्र, या गंभीर पेट दर्द का अनुभव करते हैं, तो तुरंत चिकित्सा सहायता लें।"
+    },
+    "warnings": {
+      "en": "DO NOT EXCEED 4000mg in 24 hours - overdose can cause fatal liver damage. Avoid alcohol while taking this medicine. Tell your doctor if you have liver disease. Do not take with other medicines containing acetaminophen/paracetamol. Pregnant or breastfeeding women should consult doctor before use.",
+      "kn": "24 ಗಂಟೆಗಳಲ್ಲಿ 4000mg ಮೀರಬೇಡಿ - ಅತಿಯಾದ ಸೇವನೆಯು ಮಾರಣಾಂತಿಕ ಯಕೃತ್ತಿನ ಹಾನಿಯನ್ನು ಉಂಟುಮಾಡಬಹುದು. ಈ ಔಷಧಿ ತೆಗೆದುಕೊಳ್ಳುವಾಗ ಮದ್ಯವನ್ನು ತಪ್ಪಿಸಿ. ನಿಮಗೆ ಯಕೃತ್ತಿನ ಕಾಯಿಲೆ ಇದ್ದರೆ ವೈದ್ಯರಿಗೆ ತಿಳಿಸಿ. ಅಸಿಟಮಿನೋಫೆನ್/ಪ್ಯಾರಸಿಟಮಾಲ್ ಹೊಂದಿರುವ ಇತರ ಔಷಧಿಗಳೊಂದಿಗೆ ತೆಗೆದುಕೊಳ್ಳಬೇಡಿ. ಗರ್ಭಿಣಿ ಅಥವಾ ಹಾಲುಣಿಸುವ ಮಹಿಳೆಯರು ಬಳಕೆಯ ಮೊದಲು ವೈದ್ಯರನ್ನು ಸಂಪರ್ಕಿಸಬೇಕು.",
+      "hi": "24 घंटे में 4000mg से अधिक न लें - ओवरडोज़ घातक यकृत क्षति का कारण बन सकता है। इस दवा को लेते समय शराब से बचें। अपने डॉक्टर को बताएं कि क्या आपको यकृत रोग है। एसिटामिनोफेन/पैरासिटामोल युक्त अन्य दवाओं के साथ न लें। गर्भवती या स्तनपान कराने वाली महिलाओं को उपयोग से पहले डॉक्टर से परामर्श लेना चाहिए।"
+    },
+    "manufacturer": {
+      "en": "Multiple manufacturers worldwide",
+      "kn": "ಪ್ರಪಂಚದಾದ್ಯಂತ ಅನೇಕ ತಯಾರಕರು",
+      "hi": "दुनिया भर में कई निर्माता"
+    },
+    "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop"
+  },
+  "zerodol": {
+    "name": {
+      "en": "Zerodol",
+      "kn": "ಝೀರೋಡೋಲ್",
+      "hi": "ज़ेरोडोल"
+    },
+    "genericName": {
+      "en": "Aceclofenac 100mg",
+      "kn": "ಅಸಿಕ್ಲೋಫೆನಾಕ್ 100mg",
+      "hi": "एसिक्लोफेनाक 100mg"
+    },
+    "uses": {
+      "en": "Non-steroidal anti-inflammatory drug (NSAID) used to reduce pain and inflammation. Effective for rheumatoid arthritis, osteoarthritis, ankylosing spondylitis, dental pain, back pain, post-operative pain, and sports injuries. Provides relief from pain, swelling, and stiffness.",
+      "kn": "ನೋವು ಮತ್ತು ಉರಿಯೂತವನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಬಳಸುವ ನಾನ್-ಸ್ಟೆರಾಯ್ಡಲ್ ಉರಿಯೂತದ ಔಷಧ (NSAID). ರುಮಟಾಯ್ಡ್ ಸಂಧಿವಾತ, ಅಸ್ಥಿಸಂಧಿವಾತ, ಆಂಕೈಲೋಸಿಂಗ್ ಸ್ಪಾಂಡಿಲೈಟಿಸ್, ಹಲ್ಲಿನ ನೋವು, ಬೆನ್ನು ನೋವು, ಶಸ್ತ್ರಚಿಕಿತ್ಸೆಯ ನಂತರದ ನೋವು ಮತ್ತು ಕ್ರೀಡಾ ಗಾಯಗಳಿಗೆ ಪರಿಣಾಮಕಾರಿ. ನೋವು, ಊತ ಮತ್ತು ಗಟ್ಟಿತನದಿಂದ ಪರಿಹಾರವನ್ನು ನೀಡುತ್ತದೆ.",
+      "hi": "दर्द और सूजन को कम करने के लिए उपयोग की जाने वाली नॉन-स्टेरायडल एंटी-इंफ्लेमेटरी दवा (NSAID)। रुमेटीइड गठिया, ऑस्टियोआर्थराइटिस, एंकिलोजिंग स्पॉन्डिलाइटिस, दांत दर्द, पीठ दर्द, सर्जरी के बाद दर्द, और खेल की चोटों के लिए प्रभावी। दर्द, सूजन और अकड़न से राहत प्रदान करता है।"
+    },
+    "dosage": {
+      "en": "Adults: 100mg twice daily, preferably morning and evening after meals. For acute pain: May be increased to 200mg daily as directed by doctor. Do not exceed recommended dose. Not recommended for children under 18 years. Always take with food to minimize stomach upset.",
+      "kn": "ವಯಸ್ಕರು: ದಿನಕ್ಕೆ ಎರಡು ಬಾರಿ 100mg, ಮೇಲಾಗಿ ಬೆಳಗ್ಗೆ ಮತ್ತು ಸಂಜೆ ಊಟದ ನಂತರ. ತೀವ್ರ ನೋವಿಗೆ: ವೈದ್ಯರ ನಿರ್ದೇಶದಂತೆ ದಿನಕ್ಕೆ 200mg ಗೆ ಹೆಚ್ಚಿಸಬಹುದು. ಶಿಫಾರಸು ಮಾಡಿದ ಪ್ರಮಾಣವನ್ನು ಮೀರಬೇಡಿ. 18 ವರ್ಷದೊಳಗಿನ ಮಕ್ಕಳಿಗೆ ಶಿಫಾರಸು ಮಾಡಲಾಗಿಲ್ಲ. ಹೊಟ್ಟೆ ಅಸ್ವಸ್ಥತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಯಾವಾಗಲೂ ಆಹಾರದೊಂದಿಗೆ ತೆಗೆದುಕೊಳ್ಳಿ.",
+      "hi": "वयस्क: दिन में दो बार 100mg, अधिमानतः सुबह और शाम भोजन के बाद। तीव्र दर्द के लिए: डॉक्टर के निर्देशानुसार प्रतिदिन 200mg तक बढ़ाया जा सकता है। अनुशंसित खुराक से अधिक न लें। 18 वर्ष से कम उम्र के बच्चों के लिए अनुशंसित नहीं। पेट खराब होने को कम करने के लिए हमेशा भोजन के साथ लें।"
+    },
+    "sideEffects": {
+      "en": "Common: Nausea, diarrhea, indigestion, abdominal pain, dizziness. Less common: Headache, skin rash, itching, increased liver enzymes. Serious (rare): Stomach ulcers, bleeding, severe allergic reactions, liver damage, kidney problems, heart problems.",
+      "kn": "ಸಾಮಾನ್ಯ: ವಾಕರಿಕೆ, ಅತಿಸಾರ, ಅಜೀರ್ಣ, ಹೊಟ್ಟೆ ನೋವು, ತಲೆತಿರುಗುವಿಕೆ. ಕಡಿಮೆ ಸಾಮಾನ್ಯ: ತಲೆನೋವು, ಚರ್ಮದ ದದ್ದು, ತುರಿಕೆ, ಹೆಚ್ಚಿದ ಯಕೃತ್ತಿನ ಕಿಣ್ವಗಳು. ಗಂಭೀರ (ಅಪರೂಪ): ಹೊಟ್ಟೆಯ ಹುಣ್ಣು, ರಕ್ತಸ್ರಾವ, ತೀವ್ರ ಅಲರ್ಜಿ ಪ್ರತಿಕ್ರಿಯೆಗಳು, ಯಕೃತ್ತಿನ ಹಾನಿ, ಮೂತ್ರಪಿಂಡ ಸಮಸ್ಯೆಗಳು, ಹೃದಯ ಸಮಸ್ಯೆಗಳು.",
+      "hi": "सामान्य: मतली, दस्त, अपच, पेट दर्द, चक्कर आना। कम सामान्य: सिरदर्द, त्वचा पर चकत्ते, खुजली, बढ़े हुए यकृत एंजाइम। गंभीर (दुर्लभ): पेट में अल्सर, रक्तस्राव, गंभीर एलर्जी प्रतिक्रियाएं, यकृत क्षति, गुर्दे की समस्याएं, हृदय की समस्याएं।"
+    },
+    "warnings": {
+      "en": "Do not use if you have active stomach ulcers, severe heart failure, or bleeding disorders. Avoid in third trimester of pregnancy. Use with caution if you have high blood pressure, diabetes, or kidney/liver disease. Avoid alcohol. May increase risk of heart attack or stroke. Do not use for more than a few days without doctor's advice. Take with food to reduce stomach problems.",
+      "kn": "ನೀವು ಸಕ್ರಿಯ ಹೊಟ್ಟೆಯ ಹುಣ್ಣು, ತೀವ್ರ ಹೃದಯ ವೈಫಲ್ಯ ಅಥವಾ ರಕ್ತಸ್ರಾವದ ಅಸ್ವಸ್ಥತೆಗಳನ್ನು ಹೊಂದಿದ್ದರೆ ಬಳಸಬೇಡಿ. ಗರ್ಭಾವಸ್ಥೆಯ ಮೂರನೇ ತ್ರೈಮಾಸಿಕದಲ್ಲಿ ತಪ್ಪಿಸಿ. ನಿಮಗೆ ಅಧಿಕ ರಕ್ತದೊತ್ತಡ, ಮಧುಮೇಹ ಅಥವಾ ಮೂತ್ರಪಿಂಡ/ಯಕೃತ್ತಿನ ಕಾಯಿಲೆ ಇದ್ದರೆ ಎಚ್ಚರಿಕೆಯಿಂದ ಬಳಸಿ. ಮದ್ಯವನ್ನು ತಪ್ಪಿಸಿ. ಹೃದಯಾಘಾತ ಅಥವಾ ಪಾರ್ಶ್ವವಾಯು ಅಪಾಯವನ್ನು ಹೆಚ್ಚಿಸಬಹುದು. ವೈದ್ಯರ ಸಲಹೆಯಿಲ್ಲದೆ ಕೆಲವು ದಿನಗಳಿಗಿಂತ ಹೆಚ್ಚು ಬಳಸಬೇಡಿ. ಹೊಟ್ಟೆ ಸಮಸ್ಯೆಗಳನ್ನು ಕಡಿಮೆ ಮಾಡಲು ಆಹಾರದೊಂದಿಗೆ ತೆಗೆದುಕೊಳ್ಳಿ.",
+      "hi": "यदि आपको सक्रिय पेट का अल्सर, गंभीर हृदय विफलता, या रक्तस्राव विकार हैं तो उपयोग न करें। गर्भावस्था की तीसरी तिमाही में बचें। यदि आपको उच्च रक्तचाप, मधुमेह, या गुर्दे/यकृत रोग है तो सावधानी से उपयोग करें। शराब से बचें। दिल के दौरे या स्ट्रोक का खतरा बढ़ा सकता है। डॉक्टर की सलाह के बिना कुछ दिनों से अधिक उपयोग न करें। पेट की समस्याओं को कम करने के लिए भोजन के साथ लें।"
+    },
+    "manufacturer": {
+      "en": "Ipca Laboratories Ltd.",
+      "kn": "ಐಪಿಸಿಎ ಲೇಬೊರೇಟರೀಸ್ ಲಿಮಿಟೆಡ್",
+      "hi": "इपका लेबोरेटरीज लिमिटेड"
+    },
+    "image": "https://images.unsplash.com/photo-1550572017-edd951aa8ca5?w=400&h=400&fit=crop"
+  }
+}
