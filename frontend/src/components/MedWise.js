@@ -1664,10 +1664,10 @@
 
 // export default MedWise
 
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Upload, Mic, Type, Phone, Ambulance, Video, Bell, HelpCircle, Volume2, VolumeX, Square, ChevronRight, CheckCircle, AlertTriangle, Clock, Heart, Shield, User, Menu, X } from 'lucide-react';
 import medicineDatabase from '../medicine.json';
+const API_URL = "https://medwise-kf10.onrender.com";
 
 // Translation strings
 const translations = {
@@ -1870,6 +1870,50 @@ export default function MedWiseApp() {
   
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const analyzeImageWithBackend = async (imageDataUrl) => {
+  setIsLoading(true);
+  setError(null);
+
+  try {
+    const blob = await fetch(imageDataUrl).then(r => r.blob());
+    const formData = new FormData();
+    formData.append("image", blob, "medicine.jpg");
+
+    const res = await fetch(`${API_URL}/predict`, {
+      method: "POST",
+      body: formData
+    });
+
+    if (!res.ok) {
+      throw new Error("Backend not responding (server waking up)");
+    }
+
+    const data = await res.json();
+    // expected: { success: true, predicted_class: "paracetamol" }
+
+    if (!data.success || !data.predicted_class) {
+      throw new Error(t.notFound);
+    }
+
+    const medicine = getMedicineInfo(data.predicted_class);
+
+    if (!medicine) {
+      throw new Error(t.notFound);
+    }
+
+    setMedicineData(medicine);
+    setCurrentScreen("result");
+    speakText(medicine.name, selectedLanguage);
+
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('medwise-language');
@@ -2092,25 +2136,13 @@ export default function MedWiseApp() {
     };
 
     const analyzeImage = async () => {
-      setIsLoading(true);
-      setError(null);
-      
-      // Simulate API call - in production, this would call your backend
-      setTimeout(() => {
-        // For demo, randomly select a medicine from available ones
-        const availableMedicines = ['paracetamol', 'cetrizine', 'emeset-4', 'ibugesic-plus', 'zerodol'];
-        const randomMedicine = availableMedicines[Math.floor(Math.random() * availableMedicines.length)];
-        const medicine = getMedicineInfo(randomMedicine);
-        
-        if (medicine) {
-          setMedicineData(medicine);
-          setCurrentScreen('result');
-        } else {
-          setError(t.notFound);
-        }
-        setIsLoading(false);
-      }, 2000);
-    };
+  if (!capturedImage) {
+    setError(t.noImageSelected);
+    return;
+  }
+  analyzeImageWithBackend(capturedImage);
+};
+
 
     return (
       <div className="camera-screen">
@@ -2168,28 +2200,13 @@ export default function MedWiseApp() {
     };
 
     const analyzeImage = async () => {
-      if (!uploadedImage) {
-        setError(t.noImageSelected);
-        return;
-      }
+  if (!uploadedImage) {
+    setError(t.noImageSelected);
+    return;
+  }
+  analyzeImageWithBackend(uploadedImage);
+};
 
-      setIsLoading(true);
-      setError(null);
-      
-      setTimeout(() => {
-        const availableMedicines = ['paracetamol', 'cetrizine', 'emeset-4', 'ibugesic-plus', 'zerodol'];
-        const randomMedicine = availableMedicines[Math.floor(Math.random() * availableMedicines.length)];
-        const medicine = getMedicineInfo(randomMedicine);
-        
-        if (medicine) {
-          setMedicineData(medicine);
-          setCurrentScreen('result');
-        } else {
-          setError(t.notFound);
-        }
-        setIsLoading(false);
-      }, 2000);
-    };
 
     return (
       <div className="upload-screen">
