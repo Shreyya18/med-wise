@@ -21,6 +21,7 @@ CORS(
 
 
 # Load your trained model
+# MODEL_PATH = 'medwise_trained_model.h5'  # Update with your model path
 MODEL_PATH = 'medwise_trained.tflite'  # Update with your model path
 
 # Try to load model, but allow app to run without it for testing
