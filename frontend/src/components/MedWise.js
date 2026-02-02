@@ -1667,6 +1667,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Upload, Mic, Type, Phone, Ambulance, Video, Bell, HelpCircle, Volume2, VolumeX, Square, ChevronRight, CheckCircle, AlertTriangle, Clock, Heart, Shield, User, Menu, X } from 'lucide-react';
 import medicineDatabase from '../medicine.json';
+
+// const API_URL = ' http://localhost:5000';
 const API_URL = "https://medwise-kf10.onrender.com";
 
 // Translation strings
