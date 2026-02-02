@@ -13,7 +13,12 @@ import base64
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React app
+CORS(
+    app,
+    resources={r"/*": {"origins": "*"}},
+    supports_credentials=False
+)
+
 
 # Load your trained model
 MODEL_PATH = 'medwise_trained_model.h5'  # Update with your model path
@@ -122,7 +127,7 @@ def health_check():
         'model_path': MODEL_PATH
     })
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
     """Predict medicine from uploaded image"""
     try:
