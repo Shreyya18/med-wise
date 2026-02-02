@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for React app
 
 # Load your trained model
-MODEL_PATH = 'image_classifier_model.h5'  # Update with your model path
+MODEL_PATH = 'medwise_trained_model.h5'  # Update with your model path
 
 # Try to load model, but allow app to run without it for testing
 try:
@@ -41,36 +41,36 @@ CLASS_NAMES = [
     'paracetamol'
 ]
 
-# Medicine information database
-MEDICINE_INFO = {
-    'cetrizine': {
-        'name': 'Cetrizine (Cetirizine)',
-        'generic_name': 'Cetirizine Hydrochloride',
-        'uses': 'Antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching',
-        'dosage': 'Adults and children 6 years and older: 5-10mg once daily',
-        'side_effects': 'Drowsiness, fatigue, dry mouth, nausea, headache',
-        'warnings': 'May cause drowsiness. Avoid alcohol. Consult doctor if pregnant or breastfeeding.',
-        'manufacturer': 'Various'
-    },
-    'emeset-4': {
-        'name': 'Emeset-4 (Ondansetron)',
-        'generic_name': 'Ondansetron 4mg',
-        'uses': 'Prevents nausea and vomiting caused by chemotherapy, radiation therapy, or surgery',
-        'dosage': 'Adults: 4-8mg before treatment, then every 8 hours as needed',
-        'side_effects': 'Headache, constipation, dizziness, drowsiness',
-        'warnings': 'Take as directed by doctor. Do not exceed recommended dose.',
-        'manufacturer': 'Alkem Laboratories'
-    },
-    'paracetamol': {
-        'name': 'Paracetamol (Acetaminophen)',
-        'generic_name': 'Paracetamol',
-        'uses': 'Pain relief and fever reduction. Used for headaches, muscle aches, arthritis, backaches, toothaches, colds, and fevers',
-        'dosage': 'Adults: 500-1000mg every 4-6 hours as needed. Maximum 4000mg per day',
-        'side_effects': 'Rare at normal doses. May include nausea, stomach pain, loss of appetite, rash',
-        'warnings': 'DO NOT EXCEED MAXIMUM DOSE. Overdose can cause severe liver damage. Avoid alcohol while taking this medication.',
-        'manufacturer': 'Various'
-    }
-}
+# # Medicine information database
+# MEDICINE_INFO = {
+#     'cetrizine': {
+#         'name': 'Cetrizine (Cetirizine)',
+#         'generic_name': 'Cetirizine Hydrochloride',
+#         'uses': 'Antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching',
+#         'dosage': 'Adults and children 6 years and older: 5-10mg once daily',
+#         'side_effects': 'Drowsiness, fatigue, dry mouth, nausea, headache',
+#         'warnings': 'May cause drowsiness. Avoid alcohol. Consult doctor if pregnant or breastfeeding.',
+#         'manufacturer': 'Various'
+#     },
+#     'emeset-4': {
+#         'name': 'Emeset-4 (Ondansetron)',
+#         'generic_name': 'Ondansetron 4mg',
+#         'uses': 'Prevents nausea and vomiting caused by chemotherapy, radiation therapy, or surgery',
+#         'dosage': 'Adults: 4-8mg before treatment, then every 8 hours as needed',
+#         'side_effects': 'Headache, constipation, dizziness, drowsiness',
+#         'warnings': 'Take as directed by doctor. Do not exceed recommended dose.',
+#         'manufacturer': 'Alkem Laboratories'
+#     },
+#     'paracetamol': {
+#         'name': 'Paracetamol (Acetaminophen)',
+#         'generic_name': 'Paracetamol',
+#         'uses': 'Pain relief and fever reduction. Used for headaches, muscle aches, arthritis, backaches, toothaches, colds, and fevers',
+#         'dosage': 'Adults: 500-1000mg every 4-6 hours as needed. Maximum 4000mg per day',
+#         'side_effects': 'Rare at normal doses. May include nausea, stomach pain, loss of appetite, rash',
+#         'warnings': 'DO NOT EXCEED MAXIMUM DOSE. Overdose can cause severe liver damage. Avoid alcohol while taking this medication.',
+#         'manufacturer': 'Various'
+#     }
+# }
 
 @app.route('/', methods=['GET'])
 def home():
@@ -85,8 +85,8 @@ def home():
             'GET /': 'This page - API information',
             'GET /health': 'Health check',
             'POST /predict': 'Predict medicine from image (multipart/form-data with "image" field)',
-            'POST /search': 'Search medicine by name (JSON with "name" field)',
-            'GET /medicines': 'List all available medicines'
+            # 'POST /search': 'Search medicine by name (JSON with "name" field)',
+            # 'GET /medicines': 'List all available medicines'
         },
         'usage_examples': {
             'predict': 'curl -X POST -F "image=@medicine.jpg" http://localhost:5000/predict',
@@ -152,65 +152,72 @@ def predict():
         # Get predicted class name
         predicted_medicine = CLASS_NAMES[predicted_class_idx]
         
-        # Get medicine information
-        medicine_info = MEDICINE_INFO.get(predicted_medicine, {
-            'name': predicted_medicine.capitalize(),
-            'uses': 'Information not available',
-            'dosage': 'Consult healthcare provider',
-            'warnings': 'Consult healthcare provider'
-        })
+        # # Get medicine information
+        # medicine_info = MEDICINE_INFO.get(predicted_medicine, {
+        #     'name': predicted_medicine.capitalize(),
+        #     'uses': 'Information not available',
+        #     'dosage': 'Consult healthcare provider',
+        #     'warnings': 'Consult healthcare provider'
+        # })
         
         # Return result
+        # return jsonify({
+        #     'success': True,
+        #     'predicted_class': predicted_medicine,
+        #     'confidence': confidence,
+        #     'medicine_info': medicine_info,
+        #     'demo_mode': model is None,
+        #     'all_predictions': {
+        #         CLASS_NAMES[i]: float(predictions[0][i]) 
+        #         for i in range(len(CLASS_NAMES))
+        #     }
+        # })
+
         return jsonify({
-            'success': True,
-            'predicted_class': predicted_medicine,
-            'confidence': confidence,
-            'medicine_info': medicine_info,
-            'demo_mode': model is None,
-            'all_predictions': {
-                CLASS_NAMES[i]: float(predictions[0][i]) 
-                for i in range(len(CLASS_NAMES))
-            }
+            "success": True,
+            "predicted_class": predicted_medicine,
+            "confidence": confidence
         })
+
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/search', methods=['POST'])
-def search_medicine():
-    """Search medicine by name"""
-    try:
-        data = request.get_json()
-        medicine_name = data.get('name', '').lower().strip()
+# @app.route('/search', methods=['POST'])
+# def search_medicine():
+#     """Search medicine by name"""
+#     try:
+#         data = request.get_json()
+#         medicine_name = data.get('name', '').lower().strip()
         
-        if not medicine_name:
-            return jsonify({'error': 'No medicine name provided'}), 400
+#         if not medicine_name:
+#             return jsonify({'error': 'No medicine name provided'}), 400
         
-        # Search in medicine database
-        medicine_info = MEDICINE_INFO.get(medicine_name)
+#         # Search in medicine database
+#         medicine_info = MEDICINE_INFO.get(medicine_name)
         
-        if medicine_info:
-            return jsonify({
-                'success': True,
-                'medicine_info': medicine_info
-            })
-        else:
-            return jsonify({
-                'success': False,
-                'message': 'Medicine not found in database'
-            }), 404
+#         if medicine_info:
+#             return jsonify({
+#                 'success': True,
+#                 'medicine_info': medicine_info
+#             })
+#         else:
+#             return jsonify({
+#                 'success': False,
+#                 'message': 'Medicine not found in database'
+#             }), 404
     
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 500
 
-@app.route('/medicines', methods=['GET'])
-def list_medicines():
-    """List all available medicines"""
-    return jsonify({
-        'success': True,
-        'medicines': list(MEDICINE_INFO.keys()),
-        'count': len(MEDICINE_INFO)
-    })
+# @app.route('/medicines', methods=['GET'])
+# def list_medicines():
+#     """List all available medicines"""
+#     return jsonify({
+#         'success': True,
+#         'medicines': list(MEDICINE_INFO.keys()),
+#         'count': len(MEDICINE_INFO)
+#     })
 
 if __name__ == '__main__':
     print("=" * 60)
