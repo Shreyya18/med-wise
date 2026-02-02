@@ -2060,7 +2060,7 @@ export default function MedWiseApp() {
           stream.getTracks().forEach(track => track.stop());
         }
       };
-    }, []);
+    }, [stream]);
 
     const startCamera = async () => {
       try {
@@ -2337,7 +2337,7 @@ export default function MedWiseApp() {
           }
         };
       }
-    }, [selectedLanguage]);
+    }, [selectedLanguage, transcript]);
 
     const startListening = () => {
       if (recognitionRef.current) {
@@ -2421,7 +2421,7 @@ export default function MedWiseApp() {
         `;
         speakText(fullInfo, selectedLanguage);
       }
-    }, [medicineData]);
+    }, []);
 
     if (!medicineData) return null;
 
