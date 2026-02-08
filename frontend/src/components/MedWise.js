@@ -1,4 +1,4 @@
- /* global webkitSpeechRecognition */
+/* global webkitSpeechRecognition */
 
 
 // import React, { useState, useEffect, useRef } from 'react';
@@ -114,38 +114,38 @@
 
 //   const speak = (text, lang) => {
 //     if (!audioEnabled || !('speechSynthesis' in window)) return;
-    
+
 //     window.speechSynthesis.cancel();
-    
+
 //     return new Promise((resolve) => {
 //       const utterance = new SpeechSynthesisUtterance(text);
-      
+
 //       // Set language with better voice selection
 //       const langCode = languageCodes[lang] || 'en-US';
 //       utterance.lang = langCode;
 //       utterance.rate = 0.85;
 //       utterance.pitch = 1;
 //       utterance.volume = 1;
-      
+
 //       // Wait for voices to load
 //       const setVoice = () => {
 //         const voices = window.speechSynthesis.getVoices();
-        
+
 //         // Try to find a voice for the language
 //         let voice = voices.find(v => v.lang.startsWith(langCode.split('-')[0]));
-        
+
 //         // Fallback: for Kannada and Hindi, use any available Indian voice or English
 //         if (!voice && (lang === 'kannada' || lang === 'hindi')) {
 //           voice = voices.find(v => v.lang.includes('IN')) || 
 //                   voices.find(v => v.lang.includes('en-IN')) ||
 //                   voices.find(v => v.lang.includes('en-US'));
 //         }
-        
+
 //         if (voice) {
 //           utterance.voice = voice;
 //         }
 //       };
-      
+
 //       // Load voices if not loaded
 //       if (window.speechSynthesis.getVoices().length === 0) {
 //         window.speechSynthesis.onvoiceschanged = () => {
@@ -154,7 +154,7 @@
 //       } else {
 //         setVoice();
 //       }
-      
+
 //       utterance.onstart = () => setIsSpeaking(true);
 //       utterance.onend = () => {
 //         setIsSpeaking(false);
@@ -165,7 +165,7 @@
 //         setIsSpeaking(false);
 //         resolve();
 //       };
-      
+
 //       // Small delay to ensure voice is set
 //       setTimeout(() => {
 //         window.speechSynthesis.speak(utterance);
@@ -184,10 +184,10 @@
 
 //     const playNext = () => {
 //       if (stage !== 'language') return;
-      
+
 //       const lang = languages[index];
 //       speak(texts[lang].languagePrompt, lang);
-      
+
 //       index = (index + 1) % 3;
 //       languageLoopRef.current = setTimeout(playNext, 5000);
 //     };
@@ -268,11 +268,11 @@
 //     try {
 //       // Preprocess image
 //       const processedImage = await preprocessImage(imageData);
-      
+
 //       // Local API endpoint
 //       // const API_URL = ' http://localhost:5000';
 //       const API_URL = 'https://medwise-kf10.onrender.com/';
-      
+
 //       const formData = new FormData();
 //       const blob = await fetch(processedImage).then(r => r.blob());
 //       formData.append('image', blob, 'medicine.jpg');
@@ -287,12 +287,12 @@
 //       }
 
 //       const data = await response.json();
-      
+
 //       // Expected response format: { success: true, medicine_info: {...} }
 //       if (data.success && data.medicine_info) {
 //         return data.medicine_info;
 //       }
-      
+
 //       return null;
 //     } catch (error) {
 //       console.error('Prediction error:', error);
@@ -344,11 +344,11 @@
 //       ctx.drawImage(video, 0, 0);
 //       const imageData = canvas.toDataURL('image/jpeg');
 //       setImagePreview(imageData);
-      
+
 //       const stream = video.srcObject;
 //       stream.getTracks().forEach(track => track.stop());
 //       setCameraActive(false);
-      
+
 //       processImage(imageData);
 //     }
 //   };
@@ -356,15 +356,15 @@
 //   const processImage = async (imageData) => {
 //     setIsProcessing(true);
 //     speak(texts[language].processing, language);
-    
+
 //     try {
 //       // Call your trained model
 //       const medicineInfo = await predictMedicine(imageData);
-      
+
 //       if (medicineInfo) {
 //         setResult(medicineInfo);
 //         setStage('result');
-        
+
 //         const resultText = `Medicine identified: ${medicineInfo.name}. Used for ${medicineInfo.uses}. ${medicineInfo.dosage}`;
 //         speak(resultText, language);
 //       } else {
@@ -383,18 +383,18 @@
 
 //   const processText = async () => {
 //     if (!textInput.trim()) return;
-    
+
 //     setIsProcessing(true);
 //     speak(texts[language].processing, language);
-    
+
 //     const searchTerm = textInput.toLowerCase().trim();
 //     const medicineInfo = MEDICINE_DATABASE[searchTerm];
-    
+
 //     setTimeout(() => {
 //       if (medicineInfo) {
 //         setResult(medicineInfo);
 //         setStage('result');
-        
+
 //         const resultText = `Information for ${medicineInfo.name}: ${medicineInfo.uses}. ${medicineInfo.dosage}`;
 //         speak(resultText, language);
 //       } else {
@@ -418,24 +418,24 @@
 //     recognition.lang = languageCodes[language];
 
 //     recognition.onstart = () => setIsListening(true);
-    
+
 //     recognition.onresult = (event) => {
 //       const transcript = event.results[0][0].transcript;
 //       setTextInput(transcript);
 //       setIsListening(false);
-      
+
 //       setTimeout(() => {
 //         const searchTerm = transcript.toLowerCase().trim();
 //         const medicineInfo = MEDICINE_DATABASE[searchTerm];
-        
+
 //         setIsProcessing(true);
 //         speak(texts[language].processing, language);
-        
+
 //         setTimeout(() => {
 //           if (medicineInfo) {
 //             setResult(medicineInfo);
 //             setStage('result');
-            
+
 //             const resultText = `You said ${transcript}. Medicine: ${medicineInfo.name}. ${medicineInfo.uses}`;
 //             speak(resultText, language);
 //           } else {
@@ -610,7 +610,7 @@
 //             {inputMode === 'image' && (
 //               <div>
 //                 <h2 className="text-2xl font-semibold mb-6">{t.uploadOrCapture}</h2>
-                
+
 //                 {!cameraActive && !imagePreview && (
 //                   <div className="space-y-4">
 //                     <label className="block">
@@ -915,38 +915,38 @@
 
 //   // const speak = (text, lang) => {
 //   //   if (!audioEnabled || !('speechSynthesis' in window)) return;
-    
+
 //   //   window.speechSynthesis.cancel();
-    
+
 //   //   return new Promise((resolve) => {
 //   //     const utterance = new SpeechSynthesisUtterance(text);
-      
+
 //   //     // Set language with better voice selection
 //   //     const langCode = languageCodes[lang] || 'en-US';
 //   //     utterance.lang = langCode;
 //   //     utterance.rate = 0.85;
 //   //     utterance.pitch = 1;
 //   //     utterance.volume = 1;
-      
+
 //   //     // Wait for voices to load
 //   //     const setVoice = () => {
 //   //       const voices = window.speechSynthesis.getVoices();
-        
+
 //   //       // Try to find a voice for the language
 //   //       let voice = voices.find(v => v.lang.startsWith(langCode.split('-')[0]));
-        
+
 //   //       // Fallback: for Kannada and Hindi, use any available Indian voice or English
 //   //       if (!voice && (lang === 'kannada' || lang === 'hindi')) {
 //   //         voice = voices.find(v => v.lang.includes('IN')) || 
 //   //                 voices.find(v => v.lang.includes('en-IN')) ||
 //   //                 voices.find(v => v.lang.includes('en-US'));
 //   //       }
-        
+
 //   //       if (voice) {
 //   //         utterance.voice = voice;
 //   //       }
 //   //     };
-      
+
 //   //     // Load voices if not loaded
 //   //     if (window.speechSynthesis.getVoices().length === 0) {
 //   //       window.speechSynthesis.onvoiceschanged = () => {
@@ -955,7 +955,7 @@
 //   //     } else {
 //   //       setVoice();
 //   //     }
-      
+
 //   //     utterance.onstart = () => setIsSpeaking(true);
 //   //     utterance.onend = () => {
 //   //       setIsSpeaking(false);
@@ -966,7 +966,7 @@
 //   //       setIsSpeaking(false);
 //   //       resolve();
 //   //     };
-      
+
 //   //     // Small delay to ensure voice is set
 //   //     setTimeout(() => {
 //   //       window.speechSynthesis.speak(utterance);
@@ -982,7 +982,7 @@
 //     const langCode = languageCodes[lang] || 'en-US';
 //     utterance.lang = langCode;
 
-    
+
 
 //     // Slow & clear (medical friendly)
 //     utterance.rate = 0.6;
@@ -1031,10 +1031,10 @@
 
 //     const playNext = () => {
 //       if (stage !== 'language') return;
-      
+
 //       const lang = languages[index];
 //       speak(texts[lang].languagePrompt, lang);
-      
+
 //       index = (index + 1) % 3;
 //       languageLoopRef.current = setTimeout(playNext, 5000);
 //     };
@@ -1115,11 +1115,11 @@
 //     try {
 //       // Preprocess image
 //       const processedImage = await preprocessImage(imageData);
-      
+
 //       // Local API endpoint
 //       // const API_URL = ' http://localhost:5000';
 //       const API_URL = 'https://medwise-kf10.onrender.com/';
-      
+
 //       const formData = new FormData();
 //       const blob = await fetch(processedImage).then(r => r.blob());
 //       formData.append('image', blob, 'medicine.jpg');
@@ -1134,12 +1134,12 @@
 //       }
 
 //       const data = await response.json();
-      
+
 //       // Expected response format: { success: true, medicine_info: {...} }
 //       if (data.success && data.medicine_info) {
 //         return data.medicine_info;
 //       }
-      
+
 //       return null;
 //     } catch (error) {
 //       console.error('Prediction error:', error);
@@ -1191,11 +1191,11 @@
 //       ctx.drawImage(video, 0, 0);
 //       const imageData = canvas.toDataURL('image/jpeg');
 //       setImagePreview(imageData);
-      
+
 //       const stream = video.srcObject;
 //       stream.getTracks().forEach(track => track.stop());
 //       setCameraActive(false);
-      
+
 //       processImage(imageData);
 //     }
 //   };
@@ -1203,11 +1203,11 @@
 //   const processImage = async (imageData) => {
 //     setIsProcessing(true);
 //     speak(texts[language].processing, language);
-    
+
 //     try {
 //       // Call your trained model
 //       const medicineInfo = await predictMedicine(imageData);
-      
+
 //       if (!medicineInfo) {
 //   setResult({
 //     name: texts[language].noResult,
@@ -1265,18 +1265,18 @@
 
 //   const processText = async () => {
 //     if (!textInput.trim()) return;
-    
+
 //     setIsProcessing(true);
 //     speak(texts[language].processing, language);
-    
+
 //     const searchTerm = textInput.toLowerCase().trim();
 //     const medicineInfo = MEDICINE_DATABASE[searchTerm];
-    
+
 //     setTimeout(() => {
 //       if (medicineInfo) {
 //         setResult(medicineInfo);
 //         setStage('result');
-        
+
 //         const resultText = `Information for ${medicineInfo.name}: ${medicineInfo.uses}. ${medicineInfo.dosage}`;
 //         speak(resultText, language);
 //       } else {
@@ -1300,24 +1300,24 @@
 //     recognition.lang = languageCodes[language];
 
 //     recognition.onstart = () => setIsListening(true);
-    
+
 //     recognition.onresult = (event) => {
 //       const transcript = event.results[0][0].transcript;
 //       setTextInput(transcript);
 //       setIsListening(false);
-      
+
 //       setTimeout(() => {
 //         const searchTerm = transcript.toLowerCase().trim();
 //         const medicineInfo = MEDICINE_DATABASE[searchTerm];
-        
+
 //         setIsProcessing(true);
 //         speak(texts[language].processing, language);
-        
+
 //         setTimeout(() => {
 //           if (medicineInfo) {
 //             setResult(medicineInfo);
 //             setStage('result');
-            
+
 //             const resultText = `You said ${transcript}. Medicine: ${medicineInfo.name}. ${medicineInfo.uses}`;
 //             speak(resultText, language);
 //           } else {
@@ -1492,7 +1492,7 @@
 //             {inputMode === 'image' && (
 //               <div>
 //                 <h2 className="text-2xl font-semibold mb-6">{t.uploadOrCapture}</h2>
-                
+
 //                 {!cameraActive && !imagePreview && (
 //                   <div className="space-y-4">
 //                     <label className="block">
@@ -1668,8 +1668,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Camera, Upload, Mic, Type, Phone, Ambulance, Video, Bell, HelpCircle, Volume2, VolumeX, Square, ChevronRight, CheckCircle, AlertTriangle, Clock, Heart, Shield, User, Menu, X } from 'lucide-react';
 import medicineDatabase from '../medicine.json';
 
-// const API_URL = ' http://localhost:5000';
-const API_URL = "https://medwise-kf10.onrender.com";
+const API_URL = 'http://localhost:5000';
+// const API_URL = "https://medwise-kf10.onrender.com";
 
 // Translation strings
 const translations = {
@@ -1858,6 +1858,8 @@ const translations = {
   }
 };
 
+
+
 export default function MedWiseApp() {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
   const [currentScreen, setCurrentScreen] = useState('language');
@@ -1869,63 +1871,194 @@ export default function MedWiseApp() {
   const [capturedImage, setCapturedImage] = useState(null);
   const [reminders, setReminders] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
-  const analyzeImageWithBackend = async (imageDataUrl) => {
-  setIsLoading(true);
-  setError(null);
 
-  try {
-    const blob = await fetch(imageDataUrl).then(r => r.blob());
-    const formData = new FormData();
-    formData.append("image", blob, "medicine.jpg");
-
-    const res = await fetch(`${API_URL}/predict`, {
-      method: "POST",
-      body: formData
-    });
-
-    if (!res.ok) {
-      throw new Error("Backend not responding (server waking up)");
-    }
-
-    const data = await res.json();
-    // expected: { success: true, predicted_class: "paracetamol" }
-
-    if (!data.success || !data.predicted_class) {
-      throw new Error(t.notFound);
-    }
-
-    const medicine = getMedicineInfo(data.predicted_class);
-
-    if (!medicine) {
-      throw new Error(t.notFound);
-    }
-
-    setMedicineData(medicine);
-    setCurrentScreen("result");
-    speakText(medicine.name, selectedLanguage);
-
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setIsLoading(false);
+  const screenInstructions = {
+  camera: {
+    en: "Point the camera at the medicine strip and tap Take Picture.",
+    kn: "ಔಷಧಿ ಸ್ಟ್ರಿಪ್ ಮೇಲೆ ಕ್ಯಾಮೆರಾವನ್ನು ನೆಟ್ಟಗೆ ಹಿಡಿದು ಫೋಟೋ ತೆಗೆಯಿರಿ.",
+    hi: "दवा की पट्टी पर कैमरा रखें और तस्वीर लें।"
+  },
+  upload: {
+    en: "Select a clear image of the medicine from your device.",
+    kn: "ನಿಮ್ಮ ಸಾಧನದಿಂದ ಔಷಧಿಯ ಸ್ಪಷ್ಟ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+    hi: "अपने डिवाइस से दवा की साफ तस्वीर चुनें।"
+  },
+  text: {
+    en: "Type the medicine name and press search.",
+    kn: "ಔಷಧಿಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಹುಡುಕಿ ಒತ್ತಿ.",
+    hi: "दवा का नाम लिखें और खोजें दबाएँ।"
+  },
+  voice: {
+    en: "Tap the microphone and clearly speak the medicine name.",
+    kn: "ಮೈಕ್ರೊಫೋನ್ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ ಔಷಧಿಯ ಹೆಸರನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿ.",
+    hi: "माइक्रोफोन दबाएँ और दवा का नाम स्पष्ट बोलें।"
   }
 };
 
+
+  const analyzeImageWithBackend = async (imageDataUrl) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const blob = await fetch(imageDataUrl).then(r => r.blob());
+      const formData = new FormData();
+      formData.append("image", blob, "medicine.jpg");
+
+      const res = await fetch(`${API_URL}/predict`, {
+        method: "POST",
+        body: formData
+      });
+
+      if (!res.ok) {
+        throw new Error("Backend not responding (server waking up)");
+      }
+
+      const data = await res.json();
+      // expected: { success: true, predicted_class: "paracetamol" }
+
+      if (!data.success || !data.predicted_class) {
+        throw new Error(t.notFound);
+      }
+
+      const medicine = getMedicineInfo(data.predicted_class);
+
+      if (!medicine) {
+        throw new Error(t.notFound);
+      }
+
+      setMedicineData(medicine);
+      setCurrentScreen("result");
+      speakText(medicine.name, selectedLanguage);
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+  if (
+    screenInstructions[currentScreen] &&
+    selectedLanguage &&
+    !isMuted
+  ) {
+    window.speechSynthesis.cancel();
+
+    const instruction =
+      screenInstructions[currentScreen][selectedLanguage];
+
+    const timer = setTimeout(() => {
+      speakText(instruction, selectedLanguage);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }
+}, [currentScreen, selectedLanguage, isMuted]);
+
+
+  useEffect(() => {
+  if (currentScreen !== "menu" || !selectedLanguage || isMuted) return;
+
+  const menuText = `
+    ${t.scanMedicine}.
+    ${t.uploadImage}.
+    ${t.searchByName}.
+    ${t.voiceSearch}.
+  `;
+
+  let intervalId;
+
+  // Speak once quickly
+  const startTimer = setTimeout(() => {
+    speakText(menuText, selectedLanguage);
+
+    // Repeat until user leaves menu
+    intervalId = setInterval(() => {
+      speakText(menuText, selectedLanguage);
+    }, 9000);
+  }, 500);
+
+  return () => {
+    clearTimeout(startTimer);
+    if (intervalId) clearInterval(intervalId);
+    window.speechSynthesis.cancel();
+  };
+}, [currentScreen, selectedLanguage, isMuted]);
+
+
+
+  useEffect(() => {
+  if (currentScreen === "result" && medicineData && !isMuted) {
+    window.speechSynthesis.cancel();
+
+    const fullInfo = `
+      ${t.medicineInfo}.
+      ${medicineData.name}.
+      ${t.genericName}: ${medicineData.genericName}.
+      ${t.uses}: ${medicineData.uses}.
+      ${t.dosage}: ${medicineData.dosage}.
+      ${t.sideEffects}: ${medicineData.sideEffects}.
+      ${t.warnings}: ${medicineData.warnings}.
+    `;
+
+    // Small delay ensures UI is painted before speech
+    const timer = setTimeout(() => {
+      speakText(fullInfo, selectedLanguage);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }
+}, [currentScreen, medicineData, selectedLanguage, isMuted]);
+
+
+  useEffect(() => {
+  if (currentScreen !== "language" || isMuted) return;
+
+  const languages = ["en", "kn", "hi"];
+  const prompts = {
+    en: "Press 1 for English",
+    kn: "ಕನ್ನಡಕ್ಕೆ 2 ಒತ್ತಿ",
+    hi: "हिंदी के लिए 3 दबाएं"
+  };
+
+  let index = 0;
+  let intervalId;
+
+  // 🔹 Speak almost immediately
+  const startTimer = setTimeout(() => {
+    speakText(prompts[languages[index]], languages[index]);
+    index++;
+
+    // 🔹 Then repeat
+    intervalId = setInterval(() => {
+      speakText(prompts[languages[index % languages.length]], languages[index % languages.length]);
+      index++;
+    }, 2500); // faster cycle
+  }, 200); // 🔥 faster start
+
+  return () => {
+    clearTimeout(startTimer);
+    if (intervalId) clearInterval(intervalId);
+    window.speechSynthesis.cancel();
+  };
+}, [currentScreen, isMuted]);
 
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('medwise-language');
     const savedReminders = localStorage.getItem('medwise-reminders');
-    
+
     if (savedLanguage) {
       setSelectedLanguage(savedLanguage);
       setCurrentScreen('menu');
     }
-    
+
     if (savedReminders) {
       setReminders(JSON.parse(savedReminders));
     }
@@ -1946,7 +2079,7 @@ export default function MedWiseApp() {
     const utterance = new SpeechSynthesisUtterance(text);
     const langCodes = { en: 'en-US', kn: 'kn-IN', hi: 'hi-IN' };
     utterance.lang = langCodes[language] || 'en-US';
-    utterance.rate = 0.9;
+    utterance.rate = 0.7;
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = () => setIsSpeaking(false);
@@ -1963,7 +2096,7 @@ export default function MedWiseApp() {
   const getMedicineInfo = (medicineName) => {
     const medicineKey = medicineName.toLowerCase().replace(/ /g, '-');
     const medicine = medicineDatabase[medicineKey];
-    
+
     if (!medicine) return null;
 
     return {
@@ -1988,13 +2121,13 @@ export default function MedWiseApp() {
           <h1 className="app-title">MedWise</h1>
           <p className="app-subtitle">Know Your Medicine</p>
         </div>
-        
+
         <div className="language-options">
           <h2 className="select-language-title">Select Your Language / ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ / अपनी भाषा चुनें</h2>
-          
+
           <div className="language-buttons">
             {['en', 'kn', 'hi'].map(lang => (
-              <button 
+              <button
                 key={lang}
                 className="language-btn"
                 onClick={() => {
@@ -2023,10 +2156,7 @@ export default function MedWiseApp() {
   );
 
   const MainMenu = () => {
-    useEffect(() => {
-      const menuText = `${t.scanMedicine}. ${t.uploadImage}. ${t.searchByName}. ${t.voiceSearch}.`;
-      speakText(menuText, selectedLanguage);
-    }, []);
+    
 
     return (
       <div className="main-menu-screen">
@@ -2041,7 +2171,7 @@ export default function MedWiseApp() {
               <p>{t.appSubtitle}</p>
             </div>
           </div>
-          <button 
+          <button
             className="lang-switch"
             onClick={() => {
               setCurrentScreen('language');
@@ -2110,8 +2240,8 @@ export default function MedWiseApp() {
 
     const startCamera = async () => {
       try {
-        const mediaStream = await navigator.mediaDevices.getUserMedia({ 
-          video: { facingMode: 'environment' } 
+        const mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'environment' }
         });
         if (videoRef.current) {
           videoRef.current.srcObject = mediaStream;
@@ -2125,7 +2255,7 @@ export default function MedWiseApp() {
     const captureImage = () => {
       const canvas = canvasRef.current;
       const video = videoRef.current;
-      
+
       if (canvas && video) {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -2138,12 +2268,12 @@ export default function MedWiseApp() {
     };
 
     const analyzeImage = async () => {
-  if (!capturedImage) {
-    setError(t.noImageSelected);
-    return;
-  }
-  analyzeImageWithBackend(capturedImage);
-};
+      if (!capturedImage) {
+        setError(t.noImageSelected);
+        return;
+      }
+      analyzeImageWithBackend(capturedImage);
+    };
 
 
     return (
@@ -2202,12 +2332,12 @@ export default function MedWiseApp() {
     };
 
     const analyzeImage = async () => {
-  if (!uploadedImage) {
-    setError(t.noImageSelected);
-    return;
-  }
-  analyzeImageWithBackend(uploadedImage);
-};
+      if (!uploadedImage) {
+        setError(t.noImageSelected);
+        return;
+      }
+      analyzeImageWithBackend(uploadedImage);
+    };
 
 
     return (
@@ -2220,16 +2350,16 @@ export default function MedWiseApp() {
         </div>
 
         <div className="upload-container">
-          <input 
-            type="file" 
+          <input
+            type="file"
             ref={fileInputRef}
             onChange={handleFileSelect}
             accept="image/*"
             style={{ display: 'none' }}
           />
-          
+
           {!uploadedImage ? (
-            <button 
+            <button
               className="upload-zone"
               onClick={() => fileInputRef.current.click()}
             >
@@ -2268,7 +2398,7 @@ export default function MedWiseApp() {
 
       setTimeout(() => {
         const medicine = getMedicineInfo(searchTerm);
-        
+
         if (medicine) {
           setMedicineData(medicine);
           setCurrentScreen('result');
@@ -2300,8 +2430,8 @@ export default function MedWiseApp() {
               className="search-input"
             />
           </div>
-          <button 
-            className="primary-btn search-btn" 
+          <button
+            className="primary-btn search-btn"
             onClick={handleSearch}
             disabled={isLoading}
           >
@@ -2336,7 +2466,7 @@ export default function MedWiseApp() {
       if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         recognitionRef.current = new SpeechRecognition();
-        
+
         const langCodes = { en: 'en-US', kn: 'kn-IN', hi: 'hi-IN' };
         recognitionRef.current.lang = langCodes[selectedLanguage];
         recognitionRef.current.continuous = false;
@@ -2378,7 +2508,7 @@ export default function MedWiseApp() {
 
       setTimeout(() => {
         const medicine = getMedicineInfo(text);
-        
+
         if (medicine) {
           setMedicineData(medicine);
           setCurrentScreen('result');
@@ -2399,7 +2529,7 @@ export default function MedWiseApp() {
         </div>
 
         <div className="voice-container">
-          <button 
+          <button
             className={`voice-btn ${isListening ? 'listening' : ''}`}
             onClick={isListening ? stopListening : startListening}
             disabled={isLoading}
@@ -2427,28 +2557,13 @@ export default function MedWiseApp() {
   };
 
   const MedicineResultCard = () => {
-    useEffect(() => {
-      if (medicineData) {
-        const fullInfo = `
-          ${t.medicineInfo}. 
-          ${medicineData.name}. 
-          ${t.genericName}: ${medicineData.genericName}.
-          ${t.uses}: ${medicineData.uses}. 
-          ${t.dosage}: ${medicineData.dosage}. 
-          ${t.sideEffects}: ${medicineData.sideEffects}. 
-          ${t.warnings}: ${medicineData.warnings}.
-        `;
-        speakText(fullInfo, selectedLanguage);
-      }
-    }, []);
-
     if (!medicineData) return null;
 
     return (
       <div className="result-screen">
         <div className="screen-header">
-          <button className="back-btn" onClick={() => { 
-            setCurrentScreen('menu'); 
+          <button className="back-btn" onClick={() => {
+            setCurrentScreen('menu');
             setMedicineData(null);
             stopSpeech();
           }}>
@@ -2503,7 +2618,7 @@ export default function MedWiseApp() {
 
   const AudioControlPanel = () => (
     <div className="audio-controls">
-      <button 
+      <button
         className={`audio-btn ${isMuted ? 'muted' : ''}`}
         onClick={() => {
           setIsMuted(!isMuted);
@@ -2515,7 +2630,7 @@ export default function MedWiseApp() {
       </button>
 
       {isSpeaking && (
-        <button 
+        <button
           className="audio-btn stop"
           onClick={stopSpeech}
           title={t.stopSpeech}
@@ -2593,11 +2708,11 @@ export default function MedWiseApp() {
         setReminders([...reminders, newReminder]);
         setReminderForm({ medicineName: '', dosageTime: '', frequency: 'daily' });
         setShowForm(false);
-        
+
         if ('Notification' in window && Notification.permission === 'default') {
           Notification.requestPermission();
         }
-        
+
         speakText(`${t.saveReminder} ${reminderForm.medicineName} ${reminderForm.dosageTime}`, selectedLanguage);
       }
     };
@@ -2616,7 +2731,7 @@ export default function MedWiseApp() {
         </div>
 
         <div className="reminders-container">
-          <button 
+          <button
             className="add-reminder-btn"
             onClick={() => setShowForm(!showForm)}
           >
@@ -2629,27 +2744,27 @@ export default function MedWiseApp() {
                 type="text"
                 placeholder={t.medicineName}
                 value={reminderForm.medicineName}
-                onChange={(e) => setReminderForm({...reminderForm, medicineName: e.target.value})}
+                onChange={(e) => setReminderForm({ ...reminderForm, medicineName: e.target.value })}
                 className="form-input"
               />
-              
+
               <input
                 type="time"
                 value={reminderForm.dosageTime}
-                onChange={(e) => setReminderForm({...reminderForm, dosageTime: e.target.value})}
+                onChange={(e) => setReminderForm({ ...reminderForm, dosageTime: e.target.value })}
                 className="form-input"
               />
-              
+
               <select
                 value={reminderForm.frequency}
-                onChange={(e) => setReminderForm({...reminderForm, frequency: e.target.value})}
+                onChange={(e) => setReminderForm({ ...reminderForm, frequency: e.target.value })}
                 className="form-select"
               >
                 <option value="daily">{t.daily}</option>
                 <option value="twice-daily">{t.twiceDaily}</option>
                 <option value="weekly">{t.weekly}</option>
               </select>
-              
+
               <button className="primary-btn" onClick={handleAddReminder}>
                 {t.saveReminder}
               </button>
@@ -2670,7 +2785,7 @@ export default function MedWiseApp() {
                       <p>{reminder.dosageTime} - {reminder.frequency}</p>
                     </div>
                   </div>
-                  <button 
+                  <button
                     className="delete-btn"
                     onClick={() => handleDeleteReminder(reminder.id)}
                   >
