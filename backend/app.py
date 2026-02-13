@@ -11,6 +11,13 @@ from PIL import Image
 import io
 import base64
 import os
+import sqlite3
+import bcrypt
+
+from flask_jwt_extended import (
+    JWTManager, create_access_token,
+    jwt_required, get_jwt_identity
+)
 
 app = Flask(__name__)
 CORS(
@@ -19,6 +26,37 @@ CORS(
     supports_credentials=False
 )
 
+app.config["JWT_SECRET_KEY"] = "b4a59ace66d310f0fb5b96d536db657a4f3aec8132e047c55c7834e57e4e3653"
+jwt = JWTManager(app)
+
+def init_db():
+    conn = sqlite3.connect("medwise.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS reminders (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            medicine_name TEXT NOT NULL,
+            dosage_time TEXT NOT NULL,
+            frequency TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users (id)
+        )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+init_db()
 
 # Load your trained model
 MODEL_PATH = 'medwise_trained_model.h5'  # Update with your model path
@@ -201,6 +239,107 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    hashed_pw = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+    conn = sqlite3.connect("medwise.db")
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute(
+            "INSERT INTO users (username, password) VALUES (?, ?)",
+            (username, hashed_pw)
+        )
+        conn.commit()
+    except:
+        return jsonify({"error": "Username already exists"}), 400
+    finally:
+        conn.close()
+
+    return jsonify({"success": True})
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    conn = sqlite3.connect("medwise.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, password FROM users WHERE username = ?", (username,))
+    user = cursor.fetchone()
+    conn.close()
+
+    if not user:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    user_id, hashed_pw = user
+
+    if not bcrypt.checkpw(password.encode('utf-8'), hashed_pw):
+        return jsonify({"error": "Invalid credentials"}), 401
+
+    access_token = create_access_token(identity=user_id)
+    return jsonify({"token": access_token})
+
+@app.route('/reminders', methods=['POST'])
+@jwt_required()
+def add_reminder():
+    user_id = get_jwt_identity()
+    data = request.get_json()
+
+    conn = sqlite3.connect("medwise.db")
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO reminders (user_id, medicine_name, dosage_time, frequency)
+        VALUES (?, ?, ?, ?)
+    """, (user_id, data["medicineName"], data["dosageTime"], data["frequency"]))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"success": True})
+
+@app.route('/reminders', methods=['GET'])
+@jwt_required()
+def get_reminders():
+    user_id = get_jwt_identity()
+
+    conn = sqlite3.connect("medwise.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, medicine_name, dosage_time, frequency FROM reminders WHERE user_id = ?", (user_id,))
+    rows = cursor.fetchall()
+    conn.close()
+
+    reminders = [
+        {
+            "id": row[0],
+            "medicineName": row[1],
+            "dosageTime": row[2],
+            "frequency": row[3]
+        }
+        for row in rows
+    ]
+
+    return jsonify(reminders)
+
+@app.route('/reminders/<int:reminder_id>', methods=['DELETE'])
+@jwt_required()
+def delete_reminder(reminder_id):
+    user_id = get_jwt_identity()
+
+    conn = sqlite3.connect("medwise.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM reminders WHERE id = ? AND user_id = ?", (reminder_id, user_id))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"success": True})
+
 # @app.route('/search', methods=['POST'])
 # def search_medicine():
 #     """Search medicine by name"""
@@ -261,3 +400,6 @@ if __name__ == '__main__':
     
     # Run Flask app
     app.run(host='0.0.0.0', port=5000)
+
+
+
