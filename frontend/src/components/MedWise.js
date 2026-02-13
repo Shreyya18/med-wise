@@ -1872,32 +1872,37 @@ export default function MedWiseApp() {
   const [reminders, setReminders] = useState([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem("token"));
+
+  const [authScreen, setAuthScreen] = useState("login");
+
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
 
   const screenInstructions = {
-  camera: {
-    en: "Point the camera at the medicine strip and tap Take Picture.",
-    kn: "ಔಷಧಿ ಸ್ಟ್ರಿಪ್ ಮೇಲೆ ಕ್ಯಾಮೆರಾವನ್ನು ನೆಟ್ಟಗೆ ಹಿಡಿದು ಫೋಟೋ ತೆಗೆಯಿರಿ.",
-    hi: "दवा की पट्टी पर कैमरा रखें और तस्वीर लें।"
-  },
-  upload: {
-    en: "Select a clear image of the medicine from your device.",
-    kn: "ನಿಮ್ಮ ಸಾಧನದಿಂದ ಔಷಧಿಯ ಸ್ಪಷ್ಟ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
-    hi: "अपने डिवाइस से दवा की साफ तस्वीर चुनें।"
-  },
-  text: {
-    en: "Type the medicine name and press search.",
-    kn: "ಔಷಧಿಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಹುಡುಕಿ ಒತ್ತಿ.",
-    hi: "दवा का नाम लिखें और खोजें दबाएँ।"
-  },
-  voice: {
-    en: "Tap the microphone and clearly speak the medicine name.",
-    kn: "ಮೈಕ್ರೊಫೋನ್ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ ಔಷಧಿಯ ಹೆಸರನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿ.",
-    hi: "माइक्रोफोन दबाएँ और दवा का नाम स्पष्ट बोलें।"
-  }
-};
+    camera: {
+      en: "Point the camera at the medicine strip and tap Take Picture.",
+      kn: "ಔಷಧಿ ಸ್ಟ್ರಿಪ್ ಮೇಲೆ ಕ್ಯಾಮೆರಾವನ್ನು ನೆಟ್ಟಗೆ ಹಿಡಿದು ಫೋಟೋ ತೆಗೆಯಿರಿ.",
+      hi: "दवा की पट्टी पर कैमरा रखें और तस्वीर लें।"
+    },
+    upload: {
+      en: "Select a clear image of the medicine from your device.",
+      kn: "ನಿಮ್ಮ ಸಾಧನದಿಂದ ಔಷಧಿಯ ಸ್ಪಷ್ಟ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
+      hi: "अपने डिवाइस से दवा की साफ तस्वीर चुनें।"
+    },
+    text: {
+      en: "Type the medicine name and press search.",
+      kn: "ಔಷಧಿಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಹುಡುಕಿ ಒತ್ತಿ.",
+      hi: "दवा का नाम लिखें और खोजें दबाएँ।"
+    },
+    voice: {
+      en: "Tap the microphone and clearly speak the medicine name.",
+      kn: "ಮೈಕ್ರೊಫೋನ್ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ ಔಷಧಿಯ ಹೆಸರನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿ.",
+      hi: "माइक्रोफोन दबाएँ और दवा का नाम स्पष्ट बोलें।"
+    }
+  };
 
 
   const analyzeImageWithBackend = async (imageDataUrl) => {
@@ -1942,62 +1947,63 @@ export default function MedWiseApp() {
     }
   };
 
+  // choosen input method instructions loop
   useEffect(() => {
-  if (
-    screenInstructions[currentScreen] &&
-    selectedLanguage &&
-    !isMuted
-  ) {
-    window.speechSynthesis.cancel();
+    if (
+      screenInstructions[currentScreen] &&
+      selectedLanguage &&
+      !isMuted
+    ) {
+      window.speechSynthesis.cancel();
 
-    const instruction =
-      screenInstructions[currentScreen][selectedLanguage];
+      const instruction =
+        screenInstructions[currentScreen][selectedLanguage];
 
-    const timer = setTimeout(() => {
-      speakText(instruction, selectedLanguage);
-    }, 400);
+      const timer = setTimeout(() => {
+        speakText(instruction, selectedLanguage);
+      }, 400);
 
-    return () => clearTimeout(timer);
-  }
-}, [currentScreen, selectedLanguage, isMuted]);
+      return () => clearTimeout(timer);
+    }
+  }, [currentScreen, selectedLanguage, isMuted]);
 
-
+  // input option menu loop
   useEffect(() => {
-  if (currentScreen !== "menu" || !selectedLanguage || isMuted) return;
+    if (currentScreen !== "menu" || !selectedLanguage || isMuted) return;
 
-  const menuText = `
+    const menuText = `
     ${t.scanMedicine}.
     ${t.uploadImage}.
     ${t.searchByName}.
     ${t.voiceSearch}.
   `;
 
-  let intervalId;
+    let intervalId;
 
-  // Speak once quickly
-  const startTimer = setTimeout(() => {
-    speakText(menuText, selectedLanguage);
-
-    // Repeat until user leaves menu
-    intervalId = setInterval(() => {
+    // Speak once quickly
+    const startTimer = setTimeout(() => {
       speakText(menuText, selectedLanguage);
-    }, 9000);
-  }, 500);
 
-  return () => {
-    clearTimeout(startTimer);
-    if (intervalId) clearInterval(intervalId);
-    window.speechSynthesis.cancel();
-  };
-}, [currentScreen, selectedLanguage, isMuted]);
+      // Repeat until user leaves menu
+      intervalId = setInterval(() => {
+        speakText(menuText, selectedLanguage);
+      }, 9000);
+    }, 500);
+
+    return () => {
+      clearTimeout(startTimer);
+      if (intervalId) clearInterval(intervalId);
+      window.speechSynthesis.cancel();
+    };
+  }, [currentScreen, selectedLanguage, isMuted]);
 
 
-
+  //  result screen medicine info loop
   useEffect(() => {
-  if (currentScreen === "result" && medicineData && !isMuted) {
-    window.speechSynthesis.cancel();
+    if (currentScreen === "result" && medicineData && !isMuted) {
+      window.speechSynthesis.cancel();
 
-    const fullInfo = `
+      const fullInfo = `
       ${t.medicineInfo}.
       ${medicineData.name}.
       ${t.genericName}: ${medicineData.genericName}.
@@ -2007,68 +2013,61 @@ export default function MedWiseApp() {
       ${t.warnings}: ${medicineData.warnings}.
     `;
 
-    // Small delay ensures UI is painted before speech
-    const timer = setTimeout(() => {
-      speakText(fullInfo, selectedLanguage);
-    }, 300);
+      // Small delay ensures UI is painted before speech
+      const timer = setTimeout(() => {
+        speakText(fullInfo, selectedLanguage);
+      }, 300);
 
-    return () => clearTimeout(timer);
-  }
-}, [currentScreen, medicineData, selectedLanguage, isMuted]);
+      return () => clearTimeout(timer);
+    }
+  }, [currentScreen, medicineData, selectedLanguage, isMuted]);
 
-
+  // language selection screen instructions loop
   useEffect(() => {
-  if (currentScreen !== "language" || isMuted) return;
+    if (!isAuthenticated || currentScreen !== "language" || isMuted) return;
 
-  const languages = ["en", "kn", "hi"];
-  const prompts = {
-    en: "Press 1 for English",
-    kn: "ಕನ್ನಡಕ್ಕೆ 2 ಒತ್ತಿ",
-    hi: "हिंदी के लिए 3 दबाएं"
-  };
+    const languages = ["en", "kn", "hi"];
+    const prompts = {
+      en: "Press 1 for English",
+      kn: "ಕನ್ನಡಕ್ಕೆ 2 ಒತ್ತಿ",
+      hi: "हिंदी के लिए 3 दबाएं"
+    };
 
-  let index = 0;
-  let intervalId;
+    let index = 0;
+    let intervalId;
 
-  // 🔹 Speak almost immediately
-  const startTimer = setTimeout(() => {
-    speakText(prompts[languages[index]], languages[index]);
-    index++;
-
-    // 🔹 Then repeat
-    intervalId = setInterval(() => {
-      speakText(prompts[languages[index % languages.length]], languages[index % languages.length]);
+    // 🔹 Speak almost immediately
+    const startTimer = setTimeout(() => {
+      speakText(prompts[languages[index]], languages[index]);
       index++;
-    }, 2500); // faster cycle
-  }, 200); // 🔥 faster start
 
-  return () => {
-    clearTimeout(startTimer);
-    if (intervalId) clearInterval(intervalId);
-    window.speechSynthesis.cancel();
-  };
-}, [currentScreen, isMuted]);
+      // 🔹 Then repeat
+      intervalId = setInterval(() => {
+        speakText(prompts[languages[index % languages.length]], languages[index % languages.length]);
+        index++;
+      }, 2500); // faster cycle
+    }, 200); // 🔥 faster start
 
+    return () => {
+      clearTimeout(startTimer);
+      if (intervalId) clearInterval(intervalId);
+      window.speechSynthesis.cancel();
+    };
+  }, [currentScreen, isMuted]);
 
+  //fetch reminders on app load and after setting new reminder
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('medwise-language');
-    const savedReminders = localStorage.getItem('medwise-reminders');
+    if (!token) return;
 
-    if (savedLanguage) {
-      setSelectedLanguage(savedLanguage);
-      setCurrentScreen('menu');
-    }
-
-    if (savedReminders) {
-      setReminders(JSON.parse(savedReminders));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (reminders.length > 0) {
-      localStorage.setItem('medwise-reminders', JSON.stringify(reminders));
-    }
-  }, [reminders]);
+    fetch(`${API_URL}/reminders`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => setReminders(data))
+      .catch(err => console.error(err));
+  }, [token]);
 
   const t = selectedLanguage ? translations[selectedLanguage] : translations.en;
 
@@ -2109,6 +2108,130 @@ export default function MedWiseApp() {
       manufacturer: medicine.manufacturer[selectedLanguage],
       image: medicine.image
     };
+  };
+
+  const LoginScreen = ({ switchToRegister }) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
+
+    const handleLogin = async () => {
+      try {
+        const res = await fetch(`${API_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error);
+
+        localStorage.setItem("token", data.token);
+        setToken(data.token);
+        setIsAuthenticated(true);
+        setCurrentScreen("language");
+      } catch (err) {
+        setErrorMsg(err.message);
+      }
+    };
+
+    return (
+      <div className="language-selector-screen">
+        <div className="language-container">
+          <h2>Login</h2>
+
+          <input
+            className="form-input"
+            placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+
+          <input
+            type="password"
+            className="form-input"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+
+          <button className="primary-btn" onClick={handleLogin}>
+            Login
+          </button>
+
+          {errorMsg && <p className="error-message">{errorMsg}</p>}
+        </div>
+        <p style={{ marginTop: "1rem", cursor: "pointer", color: "#667eea" }}
+          onClick={switchToRegister}>
+          Don't have an account? Register
+        </p>
+      </div>
+    );
+  };
+
+  const RegisterScreen = ({ switchToLogin }) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
+    const [successMsg, setSuccessMsg] = useState("");
+
+    const handleRegister = async () => {
+      try {
+        const res = await fetch(`${API_URL}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error);
+
+        setSuccessMsg("Registration successful! Please login.");
+        setErrorMsg("");
+        setUsername("");
+        setPassword("");
+      } catch (err) {
+        setErrorMsg(err.message);
+        setSuccessMsg("");
+      }
+    };
+
+    return (
+      <div className="language-selector-screen">
+        <div className="language-container">
+          <h2>Create Account</h2>
+
+          <input
+            className="form-input"
+            placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+
+          <input
+            type="password"
+            className="form-input"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+
+          <button className="primary-btn" onClick={handleRegister}>
+            Register
+          </button>
+
+          {errorMsg && <p className="error-message">{errorMsg}</p>}
+          {successMsg && <p style={{ color: "green" }}>{successMsg}</p>}
+
+          <p style={{ marginTop: "1rem", cursor: "pointer", color: "#667eea" }}
+            onClick={switchToLogin}>
+            Already have an account? Login
+          </p>
+        </div>
+      </div>
+    );
   };
 
   const LanguageSelector = () => (
@@ -2156,7 +2279,7 @@ export default function MedWiseApp() {
   );
 
   const MainMenu = () => {
-    
+
 
     return (
       <div className="main-menu-screen">
@@ -2179,6 +2302,17 @@ export default function MedWiseApp() {
             }}
           >
             {selectedLanguage === 'en' ? '🇬🇧' : selectedLanguage === 'kn' ? 'ಕನ್ನಡ' : 'हिं'}
+          </button>
+          <button
+            className="lang-switch"
+            onClick={() => {
+              localStorage.removeItem("token");
+              setIsAuthenticated(false);
+              setToken(null);
+              setCurrentScreen("language");
+            }}
+          >
+            Logout
           </button>
         </header>
 
@@ -2699,25 +2833,39 @@ export default function MedWiseApp() {
     });
     const [showForm, setShowForm] = useState(false);
 
-    const handleAddReminder = () => {
-      if (reminderForm.medicineName && reminderForm.dosageTime) {
-        const newReminder = {
-          id: Date.now(),
-          ...reminderForm
-        };
-        setReminders([...reminders, newReminder]);
-        setReminderForm({ medicineName: '', dosageTime: '', frequency: 'daily' });
-        setShowForm(false);
+    const handleAddReminder = async () => {
+      if (!reminderForm.medicineName || !reminderForm.dosageTime) return;
 
-        if ('Notification' in window && Notification.permission === 'default') {
-          Notification.requestPermission();
+      await fetch(`${API_URL}/reminders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(reminderForm)
+      });
+
+      const res = await fetch(`${API_URL}/reminders`, {
+        headers: {
+          Authorization: `Bearer ${token}`
         }
+      });
 
-        speakText(`${t.saveReminder} ${reminderForm.medicineName} ${reminderForm.dosageTime}`, selectedLanguage);
-      }
+      const data = await res.json();
+      setReminders(data);
+
+      setReminderForm({ medicineName: '', dosageTime: '', frequency: 'daily' });
+      setShowForm(false);
     };
 
-    const handleDeleteReminder = (id) => {
+    const handleDeleteReminder = async (id) => {
+      await fetch(`${API_URL}/reminders/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
       setReminders(reminders.filter(r => r.id !== id));
     };
 
@@ -2861,17 +3009,26 @@ export default function MedWiseApp() {
 
   return (
     <div className="medwise-app">
-      {currentScreen === 'language' && <LanguageSelector />}
-      {currentScreen === 'menu' && <MainMenu />}
-      {currentScreen === 'camera' && <CameraCapture />}
-      {currentScreen === 'upload' && <ImageUploader />}
-      {currentScreen === 'text' && <TextInputSearch />}
-      {currentScreen === 'voice' && <VoiceInput />}
-      {currentScreen === 'result' && <MedicineResultCard />}
-      {currentScreen === 'emergency' && <EmergencyActions />}
-      {currentScreen === 'reminders' && <ReminderManager />}
-      {currentScreen === 'help' && <HelpSupport />}
-
+      {!isAuthenticated ? (
+  authScreen === "login" ? (
+    <LoginScreen switchToRegister={() => setAuthScreen("register")} />
+  ) : (
+    <RegisterScreen switchToLogin={() => setAuthScreen("login")} />
+  )
+) : (
+        <>
+          {currentScreen === 'language' && <LanguageSelector />}
+          {currentScreen === 'menu' && <MainMenu />}
+          {currentScreen === 'camera' && <CameraCapture />}
+          {currentScreen === 'upload' && <ImageUploader />}
+          {currentScreen === 'text' && <TextInputSearch />}
+          {currentScreen === 'voice' && <VoiceInput />}
+          {currentScreen === 'result' && <MedicineResultCard />}
+          {currentScreen === 'emergency' && <EmergencyActions />}
+          {currentScreen === 'reminders' && <ReminderManager />}
+          {currentScreen === 'help' && <HelpSupport />}
+        </>
+      )}
       <style jsx>{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         .medwise-app {
