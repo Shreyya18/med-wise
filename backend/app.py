@@ -20,11 +20,7 @@ from flask_jwt_extended import (
 )
 
 app = Flask(__name__)
-CORS(
-    app,
-    resources={r"/*": {"origins": "*"}},
-    supports_credentials=False
-)
+CORS(app)
 
 app.config["JWT_SECRET_KEY"] = "b4a59ace66d310f0fb5b96d536db657a4f3aec8132e047c55c7834e57e4e3653"
 jwt = JWTManager(app)
@@ -168,14 +164,14 @@ def health_check():
         'model_path': MODEL_PATH
     })
 
-@app.before_request
-def handle_options():
-    if request.method == "OPTIONS":
-        response = jsonify({})
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
-        response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
-        return response
+# @app.before_request
+# def handle_options():
+#     if request.method == "OPTIONS":
+#         response = jsonify({})
+#         response.headers.add("Access-Control-Allow-Origin", "*")
+#         response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+#         response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+#         return response
 
 
 @app.route('/predict', methods=['POST', 'OPTIONS'])
@@ -284,13 +280,13 @@ def login():
     if not bcrypt.checkpw(password.encode('utf-8'), hashed_pw):
         return jsonify({"error": "Invalid credentials"}), 401
 
-    access_token = create_access_token(identity=user_id)
+    access_token = create_access_token(identity=str(user_id))
     return jsonify({"token": access_token})
 
 @app.route('/reminders', methods=['POST'])
 @jwt_required()
 def add_reminder():
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     data = request.get_json()
 
     conn = sqlite3.connect("medwise.db")
@@ -307,7 +303,7 @@ def add_reminder():
 @app.route('/reminders', methods=['GET'])
 @jwt_required()
 def get_reminders():
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
 
     conn = sqlite3.connect("medwise.db")
     cursor = conn.cursor()
@@ -330,11 +326,14 @@ def get_reminders():
 @app.route('/reminders/<int:reminder_id>', methods=['DELETE'])
 @jwt_required()
 def delete_reminder(reminder_id):
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
 
     conn = sqlite3.connect("medwise.db")
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM reminders WHERE id = ? AND user_id = ?", (reminder_id, user_id))
+    cursor.execute(
+        "DELETE FROM reminders WHERE id = ? AND user_id = ?",
+        (reminder_id, user_id)
+    )
     conn.commit()
     conn.close()
 

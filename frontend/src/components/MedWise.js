@@ -1947,6 +1947,10 @@ export default function MedWiseApp() {
     }
   };
 
+  useEffect(() => {
+  fetchReminders();
+}, [token]);
+
   // choosen input method instructions loop
   useEffect(() => {
     if (
@@ -2053,21 +2057,9 @@ export default function MedWiseApp() {
       if (intervalId) clearInterval(intervalId);
       window.speechSynthesis.cancel();
     };
-  }, [currentScreen, isMuted]);
+  }, [currentScreen, isMuted, isAuthenticated]);
 
-  //fetch reminders on app load and after setting new reminder
-  useEffect(() => {
-    if (!token) return;
-
-    fetch(`${API_URL}/reminders`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(res => res.json())
-      .then(data => setReminders(data))
-      .catch(err => console.error(err));
-  }, [token]);
+  
 
   const t = selectedLanguage ? translations[selectedLanguage] : translations.en;
 
@@ -2825,18 +2817,72 @@ export default function MedWiseApp() {
     );
   };
 
-  const ReminderManager = () => {
-    const [reminderForm, setReminderForm] = useState({
-      medicineName: '',
-      dosageTime: '',
-      frequency: 'daily'
+
+  const scheduleBrowserNotification = (reminder) => {
+  if (!("Notification" in window)) return;
+
+  Notification.requestPermission().then(permission => {
+    if (permission !== "granted") return;
+
+    const now = new Date();
+    const [hours, minutes] = reminder.dosageTime.split(":");
+
+    const reminderTime = new Date();
+    reminderTime.setHours(hours);
+    reminderTime.setMinutes(minutes);
+    reminderTime.setSeconds(0);
+
+    const timeout = reminderTime.getTime() - now.getTime();
+
+    if (timeout > 0) {
+      setTimeout(() => {
+        new Notification("MedWise Reminder", {
+          body: `Time to take ${reminder.medicineName}`,
+          icon: "/logo192.png"
+        });
+      }, timeout);
+    }
+  });
+};
+
+const fetchReminders = async () => {
+  if (!token) return;
+
+  try {
+    const res = await fetch(`${API_URL}/reminders`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     });
-    const [showForm, setShowForm] = useState(false);
 
-    const handleAddReminder = async () => {
-      if (!reminderForm.medicineName || !reminderForm.dosageTime) return;
+    const data = await res.json();
 
-      await fetch(`${API_URL}/reminders`, {
+    if (Array.isArray(data)) {
+      setReminders(data);
+    } else {
+      setReminders([]);
+    }
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+  const ReminderManager = () => {
+  const [reminderForm, setReminderForm] = useState({
+    medicineName: '',
+    dosageTime: '',
+    frequency: 'daily'
+  });
+  const [showForm, setShowForm] = useState(false);
+
+
+
+  const handleAddReminder = async () => {
+    if (!reminderForm.medicineName || !reminderForm.dosageTime) return;
+
+    try {
+      const res = await fetch(`${API_URL}/reminders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2845,29 +2891,55 @@ export default function MedWiseApp() {
         body: JSON.stringify(reminderForm)
       });
 
-      const res = await fetch(`${API_URL}/reminders`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      if (res.status === 401) {
+        alert("Session expired. Please login again.");
+        localStorage.removeItem("token");
+        setIsAuthenticated(false);
+        return;
+      }
 
-      const data = await res.json();
-      setReminders(data);
+      const result = await res.json();
+      if (!result.success) return;
+
+      await fetchReminders();
+
+      scheduleBrowserNotification(reminderForm);
 
       setReminderForm({ medicineName: '', dosageTime: '', frequency: 'daily' });
       setShowForm(false);
-    };
 
-    const handleDeleteReminder = async (id) => {
-      await fetch(`${API_URL}/reminders/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-      setReminders(reminders.filter(r => r.id !== id));
-    };
+  const handleDeleteReminder = async (id) => {
+  try {
+    const res = await fetch(`${API_URL}/reminders/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (res.status === 401) {
+      alert("Session expired. Please login again.");
+      localStorage.removeItem("token");
+      setIsAuthenticated(false);
+      return;
+    }
+
+    if (!res.ok) {
+      console.log(await res.text());
+      return;
+    }
+
+    await fetchReminders();
+
+  } catch (err) {
+    console.error("Delete failed:", err);
+  }
+};
 
     return (
       <div className="reminders-screen">
@@ -2924,7 +2996,8 @@ export default function MedWiseApp() {
             {reminders.length === 0 ? (
               <p className="no-reminders">{t.noReminders}</p>
             ) : (
-              reminders.map(reminder => (
+              Array.isArray(reminders) &&
+reminders.map(reminder => (
                 <div key={reminder.id} className="reminder-item">
                   <div className="reminder-info">
                     <Bell className="reminder-icon" />
@@ -3029,7 +3102,7 @@ export default function MedWiseApp() {
           {currentScreen === 'help' && <HelpSupport />}
         </>
       )}
-      <style jsx>{`
+      <style >{`
         * { margin: 0; padding: 0; box-sizing: border-box; }
         .medwise-app {
           min-height: 100vh;
